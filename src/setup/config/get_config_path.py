@@ -1,7 +1,8 @@
 import os
+from src.utils.PATHS import USER_CONFIG_FILES_DIR
 
 def get_app_dir():
-    path = os.path.join(os.environ["USERPROFILE"], ".AlexaPCControlVoice")
+    path = USER_CONFIG_FILES_DIR
     os.makedirs(path, exist_ok=True)
     return path
 

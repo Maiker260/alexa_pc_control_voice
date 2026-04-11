@@ -5,7 +5,7 @@ import ctypes
 import sys
 from .run_ps import run_ps
 from src.utils.tunnel_data import tunnel_name
-from src.utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_DATA_DIR
+from src.utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_CONFIG_FILES_DIR
 
 def is_admin():
     try:
@@ -41,14 +41,16 @@ def uninstall_cloudflared():
     if os.path.exists(CLOUDFLARED_DIR):
         try:
             shutil.rmtree(CLOUDFLARED_DIR)
+            shutil.rmtree(USER_CONFIG_FILES_DIR)
 
             subprocess.run(
                 "winget uninstall --id Cloudflare.cloudflared -e --silent",
                 shell=True
             )
             print(f"Cloudflared folder '{CLOUDFLARED_DIR}' deleted.")
+            print(f"Cloudflared folder '{USER_CONFIG_FILES_DIR}' deleted.")
         except PermissionError:
-            print(f"Permission denied. Run the script as administrator to delete '{CLOUDFLARED_DIR}'.")
+            print(f"Permission denied. Run the script as administrator to delete the directories.")
         except Exception as e:
             print(f"Failed to delete folder: {e}")
     else:

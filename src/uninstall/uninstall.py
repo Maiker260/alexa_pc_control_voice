@@ -4,7 +4,7 @@ import shutil
 import ctypes
 import sys
 from .run_ps import run_ps
-from utils.tunnel_data import tunnel_name
+# from utils.tunnel_data import tunnel_name
 from utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_DATA_DIR
 
 def is_admin():
@@ -20,6 +20,8 @@ if not is_admin():
     sys.exit()
 
 def uninstall_cloudflared():
+    tunnel_name = "alexa-tunnel"
+
     # Stop process
     try:
         run_ps("taskkill /F /IM cloudflared.exe")

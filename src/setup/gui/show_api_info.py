@@ -3,12 +3,11 @@ from src.utils.load_user_config import load_user_config
 from src.setup.config.get_config_path import get_config_path
 from .copy_key import copy_key
 
-config = load_user_config()
-
-API_KEY = config["api_key"]
-api_path = get_config_path()
-
 def show_api_info(domain):
+    config = load_user_config()
+    API_KEY = config["api_key"]
+    api_path = get_config_path()
+
     win = Toplevel()
     win.title("Setup Completed")
     win.geometry("400x250")

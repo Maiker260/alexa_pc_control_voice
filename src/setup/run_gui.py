@@ -1,12 +1,13 @@
 import threading
 from tkinter import *
+from src.setup.gui.show_api_info import show_api_info
 
 def run_gui(on_submit_callback):
     
     def start_setup(domain):
         try:
             on_submit_callback(domain)
-            root.after(0, lambda: status_label.config(text="Setup Done"))
+            root.after(0, lambda: show_api_info(domain))
         except Exception as e:
             root.after(0, lambda: status_label.config(text=f"Error: {e}"))
 

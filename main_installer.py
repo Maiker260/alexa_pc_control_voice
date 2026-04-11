@@ -1,4 +1,4 @@
-from src.setup.gui import run_gui
+from src.setup.run_gui import run_gui
 from src.setup.setup import run_setup
 from src.start_services import start_services
 

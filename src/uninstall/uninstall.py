@@ -41,6 +41,11 @@ def uninstall_cloudflared():
     if os.path.exists(CLOUDFLARED_DIR):
         try:
             shutil.rmtree(CLOUDFLARED_DIR)
+
+            subprocess.run(
+                "winget uninstall --id Cloudflare.cloudflared -e --silent",
+                shell=True
+            )
             print(f"Cloudflared folder '{CLOUDFLARED_DIR}' deleted.")
         except PermissionError:
             print(f"Permission denied. Run the script as administrator to delete '{CLOUDFLARED_DIR}'.")

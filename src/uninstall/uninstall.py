@@ -20,6 +20,12 @@ if not is_admin():
     sys.exit()
 
 def uninstall_cloudflared():
+    if not is_admin():
+        ctypes.windll.shell32.ShellExecuteW(
+            None, "runas", sys.executable, " ".join(sys.argv), None, 1
+        )
+        sys.exit()
+
     # Stop process
     try:
         run_ps("taskkill /F /IM cloudflared.exe")

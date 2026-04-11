@@ -6,7 +6,7 @@ from .config.save_app_config import save_app_config
 from .processes.install_cloudflared import install_cloudflared
 from .processes.is_cloudflared_installed import is_cloudflared_installed
 from .processes.generate_api_key import generate_api_key
-from utils.tunnel_data import tunnel_name
+from src.utils.tunnel_data import tunnel_name
 
 def run_setup(domain: str):
     print("=== Setup Alexa Automation ===")

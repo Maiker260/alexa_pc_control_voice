@@ -1,3 +1,6 @@
+import os
+from .get_config_path import get_app_dir
+
 def create_config_file(domain):
     config = f"""
 tunnel: alexa-tunnel
@@ -8,5 +11,9 @@ ingress:
     service: http://localhost:8000
   - service: http_status:404
 """
-    with open("config.yml", "w") as f:
+    path = os.path.join(get_app_dir(), "config.yml")
+
+    with open(path, "w") as f:
         f.write(config)
+
+    return path

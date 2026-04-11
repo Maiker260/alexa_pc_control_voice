@@ -1,8 +1,14 @@
 import os
 
+def get_app_dir():
+    path = os.path.join(os.environ["USERPROFILE"], ".AlexaPCControlVoice")
+    os.makedirs(path, exist_ok=True)
+    return path
+
+
 def get_config_path():
-    base_dir = os.getenv("APPDATA")
-    app_dir = os.path.join(base_dir, "Alexa PC Control Voice")
-    os.makedirs(app_dir, exist_ok=True)
-    
-    return os.path.join(app_dir, "app_config.json")
+    return os.path.join(get_app_dir(), "app_config.json")
+
+
+def get_yaml_path():
+    return os.path.join(get_app_dir(), "config.yml")

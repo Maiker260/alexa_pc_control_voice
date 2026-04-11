@@ -4,6 +4,8 @@ import shutil
 import ctypes
 import sys
 from src.utils.tunnel_data import tunnel_name
+from run_ps import run_ps
+from src.utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_DATA_DIR
 
 def is_admin():
     try:
@@ -17,28 +19,25 @@ if not is_admin():
     )
     sys.exit()
 
-CLOUDFLARED_PATH = r"C:\Program Files (x86)\cloudflared\cloudflared.exe"
-CLOUDFLARED_DIR = r"C:\Program Files (x86)\cloudflared"
-USER_DATA_DIR = os.path.join(os.environ["USERPROFILE"], ".cloudflared")
-
-def run_ps(command):
-    subprocess.run(["powershell", "-Command", command], check=True)
-
 def uninstall_cloudflared():
-    # 1. Delete tunnel
-    run_ps(f"cloudflared.exe tunnel delete {tunnel_name}")
-
-    # 2. Remove certs / login data
-    run_ps(f"Remove-Item -Recurse -Force $env:USERPROFILE\\.cloudflared")
-
-    # 3. Stop process
+    # Stop process
     try:
         run_ps("taskkill /F /IM cloudflared.exe")
         print("Cloudflared process stopped.")
     except subprocess.CalledProcessError:
         print("Cloudflared process was not running.")
 
-    # 4. Delete executable and folder
+    # Delete tunnel
+    try:
+        run_ps(f'"{CLOUDFLARED_PATH}" tunnel delete {tunnel_name}', check=False)
+        print("Tunnel deletion attempted.")
+    except Exception as e:
+        print(f"Tunnel deletion failed: {e}")
+
+    # Remove certs / login data
+    run_ps('if (Test-Path $env:USERPROFILE\\.cloudflared) { Remove-Item -Recurse -Force $env:USERPROFILE\\.cloudflared }')
+
+    # Delete executable and folder
     if os.path.exists(CLOUDFLARED_DIR):
         try:
             shutil.rmtree(CLOUDFLARED_DIR)

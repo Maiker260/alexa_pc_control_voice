@@ -1,1 +1,0 @@
-CLOUDFLARED = "cloudflared.exe"

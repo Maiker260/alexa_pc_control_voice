@@ -1,6 +1,6 @@
 from .run import run
-from .cloudflare_process import CLOUDFLARED
+from utils.PATHS import CLOUDFLARED_PATH
 
 def login():
     print("Opening Cloudflare Login...")
-    run(f"{CLOUDFLARED} tunnel login")
+    run(f'"{CLOUDFLARED_PATH}" tunnel login')

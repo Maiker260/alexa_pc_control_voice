@@ -1,10 +1,10 @@
 import json
 from fastapi import FastAPI, Request, HTTPException
+from api.load_config import load_config
 
 app = FastAPI()
 
-with open("app_config.json") as f:
-    config = json.load(f)
+config = load_config()
 
 API_KEY = config["api_key"]
 
@@ -23,6 +23,6 @@ async def alexa(request: Request):
     if not intent:
         raise HTTPException(status_code=400, detail="Invalid request")
 
-    print(f"Intent recibido: {intent}")
+    print(f"Intent received: {intent}")
 
     return {"status": "ok"}

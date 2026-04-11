@@ -1,38 +1,38 @@
 import threading
 from tkinter import *
-from .setup import run_setup
 
-def start_setup(domain):
-    try:
-        run_setup(domain)
-        root.after(0, lambda: status_label.config(text="Setup Done"))
-    except Exception as e:
-        root.after(0, lambda: status_label.config(text=f"Error: {e}"))
-
-def on_submit():
-    domain = entry.get()
+def run_gui(on_submit_callback):
     
-    if not domain:
-        status_label.config(text="Enter your Domain")
-        return
+    def start_setup(domain):
+        try:
+            on_submit_callback(domain)
+            root.after(0, lambda: status_label.config(text="Setup Done"))
+        except Exception as e:
+            root.after(0, lambda: status_label.config(text=f"Error: {e}"))
 
-    status_label.config(text="Starting setup...")
+    def on_submit():
+        domain = entry.get()
+        
+        if not domain:
+            status_label.config(text="Enter your Domain")
+            return
 
-    # Avoid UI freeze
-    threading.Thread(target=start_setup, args=(domain,)).start()
+        status_label.config(text="Starting setup...")
 
-root = Tk()
-root.title("Alexa Setup")
-root.geometry("350x200")
+        threading.Thread(target=start_setup, args=(domain,)).start()
 
-Label(root, text="Domain (ex: api.mydomain.com)").pack(pady=10)
+    root = Tk()
+    root.title("Alexa Setup")
+    root.geometry("350x200")
 
-entry = Entry(root, width=30)
-entry.pack()
+    Label(root, text="Domain (ex: api.mydomain.com)").pack(pady=10)
 
-Button(root, text="Start Setup", command=on_submit).pack(pady=10)
+    entry = Entry(root, width=30)
+    entry.pack()
 
-status_label = Label(root, text="")
-status_label.pack(pady=10)
+    Button(root, text="Start Setup", command=on_submit).pack(pady=10)
 
-root.mainloop()
+    status_label = Label(root, text="")
+    status_label.pack(pady=10)
+
+    root.mainloop()

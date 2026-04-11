@@ -1,4 +1,3 @@
-from .processes.run import run
 from .processes.login import login
 from .processes.create_tunnel import create_tunnel
 from .processes.route_dns import route_dns

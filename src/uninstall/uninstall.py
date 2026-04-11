@@ -3,9 +3,9 @@ import os
 import shutil
 import ctypes
 import sys
-from utils.tunnel_data import tunnel_name
 from run_ps import run_ps
-from utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_DATA_DIR
+from src.utils.tunnel_data import tunnel_name
+from src.utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_DATA_DIR
 
 def is_admin():
     try:

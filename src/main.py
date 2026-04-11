@@ -1,10 +1,9 @@
-import json
 from fastapi import FastAPI, Request, HTTPException
-from api.load_config import load_config
+from .utils.load_user_config import load_user_config
 
 app = FastAPI()
 
-config = load_config()
+config = load_user_config()
 
 API_KEY = config["api_key"]
 

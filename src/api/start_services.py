@@ -1,7 +1,7 @@
 import subprocess
 import threading
 
-from main import app
+from src.main import app
 from src.utils.tunnel_data import tunnel_name
 from src.utils.PATHS import CLOUDFLARED_PATH
 from .wait_for_api import wait_for_api

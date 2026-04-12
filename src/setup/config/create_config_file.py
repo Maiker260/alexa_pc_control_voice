@@ -15,6 +15,7 @@ ingress:
   - service: http_status:404
 """
 
+    # Need to replace and use "get_yaml_path()"
     path = os.path.join(USER_DATA_DIR, "config.yml")
 
     with open(path, "w") as f:

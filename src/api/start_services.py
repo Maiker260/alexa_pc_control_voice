@@ -9,13 +9,14 @@ from .run_api import run_api
 
 def start_services():
     print("Starting Services...")
-
     threading.Thread(target=lambda: run_api(app), daemon=True).start()
 
+    print("Waiting for API...")
     if not wait_for_api():
         print("API failed to start")
         return
 
+    print("API ready, starting tunnel...")
     subprocess.Popen(
         [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
     )

@@ -1,30 +1,42 @@
 import subprocess
-import threading
+import os
+import sys
+import signal
 
 from src.main import app
 from src.utils.tunnel_data import tunnel_name
 from src.utils.PATHS import CLOUDFLARED_PATH
-from .wait_for_api import wait_for_api
 from .run_api import run_api
+from src.utils.get_config_path import get_config_path
+
+process = None
 
 def start_services():
-    # print("Starting Services...")
-    # threading.Thread(target=run_api, args=(app,), daemon=True).start()
+    global process
 
-    # print("Waiting for API...")
-    # if not wait_for_api():
-    #     print("API failed to start")
-    #     return
-
-    # print("API ready, starting tunnel...")
-    # # subprocess.Popen(
-    # #     [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
-    # # )
+    # Check if the config exists
+    if not os.path.exists(get_config_path()):
+        print("ERROR: Application not installed. Run the installer first.")
+        return
 
     print("Starting tunnel...")
-    subprocess.Popen(
-        [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
-    )
+    try:
+        subprocess.Popen(
+            [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+    except Exception as e:
+        print(f"Error starting tunnel: {e}")
+
+    # Terminate the process correctly
+    def shutdown(sig, frame):
+        print("Shutting down...")
+        if process:
+            process.terminate()
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, shutdown)
 
     print("Starting Services...")
     run_api(app)

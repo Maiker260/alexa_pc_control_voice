@@ -16,8 +16,17 @@ def run_gui(on_submit_callback):
     status_label = Label(root, text="")
     status_label.pack(pady=5)
 
-    log_box = Text(root, height=10, width=45)
+    log_box = Text(
+        root,
+        height=10,
+        width=45,
+        state="disabled",
+        cursor="arrow"
+    )
     log_box.pack(pady=10)
+
+    log_box.bind("<Key>", lambda e: "break")
+    log_box.bind("<Control-c>", lambda e: None)
 
     # LOGGER
     log = create_logger(root, status_label, log_box)

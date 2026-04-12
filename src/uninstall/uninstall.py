@@ -3,7 +3,8 @@ import os
 import shutil
 import ctypes
 import sys
-from .run_ps import run_ps
+from src.utils.run_ps import run_ps
+from src.utils.run_cmd import run_cmd
 from src.utils.tunnel_data import tunnel_name
 from src.utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_CONFIG_FILES_DIR
 
@@ -22,7 +23,7 @@ def uninstall_cloudflared():
 
     # Stop process
     try:
-        run_ps(["taskkill", "/F", "/IM", "cloudflared.exe"])
+        run_cmd(["taskkill", "/F", "/IM", "cloudflared.exe"])
 
         print("Cloudflared process stopped.")
     except subprocess.CalledProcessError:
@@ -30,10 +31,10 @@ def uninstall_cloudflared():
 
     # Delete tunnel
     try:
-        run_ps([CLOUDFLARED_PATH, "tunnel", "delete", {tunnel_name}])
+        run_cmd([CLOUDFLARED_PATH, "tunnel", "delete", tunnel_name])
 
         print("Tunnel deletion attempted.")
-    except Exception as e:
+    except subprocess.CalledProcessError as e:
         print(f"Tunnel deletion failed: {e}")
 
     # Remove certs / login data
@@ -45,7 +46,7 @@ def uninstall_cloudflared():
             shutil.rmtree(CLOUDFLARED_DIR)
             shutil.rmtree(USER_CONFIG_FILES_DIR)
 
-            run_ps(["winget", "uninstall", "--id", "Cloudflare.cloudflared", "-e", "--silent"])
+            run_ps('winget uninstall --id Cloudflare.cloudflared -e --silent')
 
             print(f"Cloudflared folder '{CLOUDFLARED_DIR}' deleted.")
             print(f"Cloudflared folder '{USER_CONFIG_FILES_DIR}' deleted.")

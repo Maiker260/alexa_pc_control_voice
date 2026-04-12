@@ -1,4 +1,4 @@
 import subprocess
 
-def run(cmd):
+def run_cmd(cmd):
     return subprocess.run(cmd, check=True)

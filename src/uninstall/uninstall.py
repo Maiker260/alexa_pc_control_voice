@@ -23,7 +23,7 @@ def uninstall_cloudflared():
 
     # Stop process
     try:
-        run_cmd(["taskkill", "/F", "/IM", "cloudflared.exe"])
+        run_cmd(["taskkill", "/F", "/IM", CLOUDFLARED_PATH])
         print("Cloudflared process stopped.")
     except subprocess.CalledProcessError:
         print("Cloudflared process was not running.")

@@ -1,4 +1,3 @@
-import subprocess
 from src.utils.run_ps import run_ps
 
 def install_cloudflared():

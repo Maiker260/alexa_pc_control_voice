@@ -24,7 +24,6 @@ def uninstall_cloudflared():
     # Stop process
     try:
         run_cmd(["taskkill", "/F", "/IM", "cloudflared.exe"])
-
         print("Cloudflared process stopped.")
     except subprocess.CalledProcessError:
         print("Cloudflared process was not running.")
@@ -32,29 +31,32 @@ def uninstall_cloudflared():
     # Delete tunnel
     try:
         run_cmd([CLOUDFLARED_PATH, "tunnel", "delete", tunnel_name])
-
         print("Tunnel deletion attempted.")
-    except subprocess.CalledProcessError as e:
-        print(f"Tunnel deletion failed: {e}")
+    except subprocess.CalledProcessError:
+        print("Tunnel not found or already deleted. Skipping.")
 
     # Remove certs / login data
-    run_ps('if (Test-Path $env:USERPROFILE\\.cloudflared) { Remove-Item -Recurse -Force $env:USERPROFILE\\.cloudflared }')
+    run_ps(
+        'if (Test-Path $env:USERPROFILE\\.cloudflared) { Remove-Item -Recurse -Force $env:USERPROFILE\\.cloudflared }'
+    )
 
-    # Delete executable and folder
+    # Delete folders safely
     if os.path.exists(CLOUDFLARED_DIR):
-        try:
-            shutil.rmtree(CLOUDFLARED_DIR)
-            shutil.rmtree(USER_CONFIG_FILES_DIR)
-
-            run_ps('winget uninstall --id Cloudflare.cloudflared -e --silent')
-
-            print(f"Cloudflared folder '{CLOUDFLARED_DIR}' deleted.")
-            print(f"Cloudflared folder '{USER_CONFIG_FILES_DIR}' deleted.")
-        except PermissionError:
-            print(f"Permission denied. Run the script as administrator to delete the directories.")
-        except Exception as e:
-            print(f"Failed to delete folder: {e}")
+        shutil.rmtree(CLOUDFLARED_DIR)
+        print("CLOUDFLARED_DIR deleted.")
     else:
-        print("Cloudflared folder not found, skipping deletion.")
+        print("CLOUDFLARED_DIR not found, skipping.")
+
+    if os.path.exists(USER_CONFIG_FILES_DIR):
+        shutil.rmtree(USER_CONFIG_FILES_DIR)
+        print("USER_CONFIG_FILES_DIR deleted.")
+    else:
+        print("USER_CONFIG_FILES_DIR not found, skipping.")
+
+    # Uninstall via winget
+    try:
+        run_ps('winget uninstall --id Cloudflare.cloudflared -e --silent')
+    except subprocess.CalledProcessError:
+        print("Cloudflared not installed via winget or already removed.")
 
     print("Cloudflared removed successfully")

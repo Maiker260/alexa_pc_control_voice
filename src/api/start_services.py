@@ -26,6 +26,7 @@ def start_services():
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
+        print("Tunnel running.")
     except Exception as e:
         print(f"Error starting tunnel: {e}")
 

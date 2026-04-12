@@ -11,7 +11,7 @@ credentials-file: {credentials_file}
 
 ingress:
   - hostname: {domain}
-    service: http://localhost:8000
+    service: http://127.0.0.1:8000
   - service: http_status:404
 """
 

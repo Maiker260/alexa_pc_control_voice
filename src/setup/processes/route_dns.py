@@ -7,8 +7,10 @@ def route_dns(domain, log):
         run_cmd([CLOUDFLARED_PATH, "tunnel", "route", "dns", "alexa-tunnel", domain])
         log("DNS created")
     except subprocess.CalledProcessError as e:
-        if "already exists" in (e.stderr or ""):
+        error_msg = e.stderr or e.stdout or ""
+
+        if "already exists" in error_msg or "code: 1003" in error_msg:
             log("DNS already exists, using previous config.")
         else:
-            log(f"DNS Error: {e}")
+            log(f"DNS Error: {error_msg}")
             raise

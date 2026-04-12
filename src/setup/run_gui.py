@@ -5,7 +5,7 @@ from .gui.create_logger import create_logger
 
 def run_gui(on_submit_callback):
     root = Tk()
-    root.title("Alexa Setup")
+    root.title("Alexa PC Voice Control Setup")
     root.geometry("600x400")
 
     Label(root, text="Domain (ex: api.mydomain.com)").pack(pady=10)

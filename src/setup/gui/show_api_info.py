@@ -1,11 +1,10 @@
 from tkinter import Toplevel, Label, Button
-from src.utils.load_user_config import load_user_config
+from src.api.get_api_key import get_api_key
 from src.setup.config.get_config_path import get_config_path
 from .copy_key import copy_key
 
 def show_api_info(domain):
-    config = load_user_config()
-    API_KEY = config["api_key"]
+    API_KEY = get_api_key()
     api_path = get_config_path()
 
     win = Toplevel()

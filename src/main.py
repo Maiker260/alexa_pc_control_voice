@@ -1,11 +1,8 @@
 from fastapi import FastAPI, Request, HTTPException
-from .utils.load_user_config import load_user_config
+from .api.get_api_key import get_api_key
 
 app = FastAPI()
 
-config = load_user_config()
-
-API_KEY = config["api_key"]
 
 @app.get("/")
 def health():
@@ -13,6 +10,8 @@ def health():
 
 @app.post("/alexa")
 async def alexa(request: Request):
+    API_KEY = get_api_key()
+    
     if request.headers.get("x-api-key") != API_KEY:
         raise HTTPException(status_code=401, detail="Unauthorized")
     

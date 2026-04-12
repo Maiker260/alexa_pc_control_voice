@@ -1,7 +1,7 @@
 from tkinter import *
-from setup.gui.create_on_submit import create_on_submit
-from setup.gui.create_start_setup import create_start_setup
-from setup.gui.create_logger import create_logger
+from .gui.create_on_submit import create_on_submit
+from .gui.create_start_setup import create_start_setup
+from .gui.create_logger import create_logger
 
 def run_gui(on_submit_callback):
     root = Tk()

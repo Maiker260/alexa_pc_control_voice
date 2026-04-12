@@ -7,6 +7,10 @@ config = load_user_config()
 
 API_KEY = config["api_key"]
 
+@app.get("/")
+def health():
+    return {"status": "ok"}
+
 @app.post("/alexa")
 async def alexa(request: Request):
     if request.headers.get("x-api-key") != API_KEY:

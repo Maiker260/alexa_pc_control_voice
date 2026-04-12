@@ -8,15 +8,23 @@ from .wait_for_api import wait_for_api
 from .run_api import run_api
 
 def start_services():
+    # print("Starting Services...")
+    # threading.Thread(target=run_api, args=(app,), daemon=True).start()
+
+    # print("Waiting for API...")
+    # if not wait_for_api():
+    #     print("API failed to start")
+    #     return
+
+    # print("API ready, starting tunnel...")
+    # # subprocess.Popen(
+    # #     [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
+    # # )
+
+    print("Starting tunnel...")
+    subprocess.Popen(
+        [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
+    )
+
     print("Starting Services...")
-    threading.Thread(target=run_api, args=(app,), daemon=True).start()
-
-    print("Waiting for API...")
-    if not wait_for_api():
-        print("API failed to start")
-        return
-
-    print("API ready, starting tunnel...")
-    # subprocess.Popen(
-    #     [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
-    # )
+    run_api(app)

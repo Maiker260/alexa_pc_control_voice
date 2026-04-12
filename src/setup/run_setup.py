@@ -29,8 +29,8 @@ def run_setup(domain: str, log=None):
         write("Creating Cloudflared Tunnel...")
         create_tunnel(tunnel_name)
 
-        write("Creating Cloudflared DNS Entry...")
-        route_dns(domain)
+        write("Creating DNS Entry...")
+        route_dns(domain, log)
 
         write("Creating config.yml...")
         create_config_file(domain)

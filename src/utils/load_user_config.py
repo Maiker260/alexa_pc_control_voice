@@ -1,5 +1,5 @@
 import json
-from src.setup.config.get_config_path import get_config_path
+from .get_config_path import get_config_path
 
 def load_user_config():
     try:

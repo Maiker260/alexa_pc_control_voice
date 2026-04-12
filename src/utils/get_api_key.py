@@ -1,4 +1,4 @@
-from src.utils.load_user_config import load_user_config
+from .load_user_config import load_user_config
 
 def get_api_key():
     config = load_user_config()

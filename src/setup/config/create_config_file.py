@@ -1,5 +1,5 @@
 import os
-from .get_config_path import get_app_dir
+from src.utils.get_config_path import get_app_dir
 
 def create_config_file(domain):
     config = f"""

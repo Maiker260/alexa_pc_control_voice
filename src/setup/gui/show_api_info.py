@@ -1,6 +1,6 @@
 from tkinter import Toplevel, Label, Button
-from src.api.get_api_key import get_api_key
-from src.setup.config.get_config_path import get_config_path
+from src.utils.get_api_key import get_api_key
+from src.utils.get_config_path import get_config_path
 from .copy_key import copy_key
 
 def show_api_info(domain):

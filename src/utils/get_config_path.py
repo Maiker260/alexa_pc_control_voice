@@ -1,5 +1,5 @@
 import os
-from src.utils.PATHS import USER_CONFIG_FILES_DIR
+from .PATHS import USER_CONFIG_FILES_DIR
 
 def get_app_dir():
     path = USER_CONFIG_FILES_DIR

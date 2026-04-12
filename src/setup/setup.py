@@ -8,21 +8,37 @@ from .processes.is_cloudflared_installed import is_cloudflared_installed
 from .processes.generate_api_key import generate_api_key
 from src.utils.tunnel_data import tunnel_name
 
-def run_setup(domain: str):
-    print("=== Setup Alexa Automation ===")
+def run_setup(domain: str, log=None):
+    def write(msg):
+        if log:
+            log(msg)
+        else:
+            print(msg)
 
-    api_key = generate_api_key()
+    try:
+        write("🔑 Generating API Key...")
+        api_key = generate_api_key()
 
-    if not is_cloudflared_installed():
-        install_cloudflared()
+        if not is_cloudflared_installed():
+            write("Installing Cloudflared...")
+            install_cloudflared()
 
-    login()
-    create_tunnel(tunnel_name)
-    route_dns(domain)
+        write("Logging into Cloudflared...")
+        login()
 
-    create_config_file(domain)
-    save_app_config(domain, api_key, tunnel_name)
+        write("Creating Cloudflared Tunnel...")
+        create_tunnel(tunnel_name)
 
-    print("\n=== CONFIGURACIÓN ===")
-    print(f"URL: https://{domain}/alexa")
-    print(f"API KEY: {api_key}")
+        write("Creating Cloudflared DNS Entry...")
+        route_dns(domain)
+
+        write("Creating config.yml...")
+        create_config_file(domain)
+
+        write("Saving Configuration...")
+        save_app_config(domain, api_key, tunnel_name)
+
+        write("Setup Done.")
+    except Exception as e:
+        write(f"Setup Error: {e}")
+        raise

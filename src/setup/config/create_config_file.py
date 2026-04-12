@@ -1,5 +1,5 @@
 import os
-from src.utils.get_config_path import get_app_dir
+from src.utils.PATHS import USER_DATA_DIR
 
 def create_config_file(domain):
     config = f"""
@@ -11,7 +11,7 @@ ingress:
     service: http://localhost:8000
   - service: http_status:404
 """
-    path = os.path.join(get_app_dir(), "config.yml")
+    path = os.path.join(USER_DATA_DIR, "config.yml")
 
     with open(path, "w") as f:
         f.write(config)

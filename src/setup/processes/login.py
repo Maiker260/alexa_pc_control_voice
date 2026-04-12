@@ -3,4 +3,4 @@ from src.utils.PATHS import CLOUDFLARED_PATH
 
 def login():
     print("Opening Cloudflare Login...")
-    run(f'"{CLOUDFLARED_PATH}" tunnel login')
+    run([CLOUDFLARED_PATH, "tunnel", "login"])

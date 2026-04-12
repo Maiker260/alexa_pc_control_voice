@@ -22,14 +22,16 @@ def uninstall_cloudflared():
 
     # Stop process
     try:
-        run_ps("taskkill /F /IM cloudflared.exe")
+        run_ps(["taskkill", "/F", "/IM", "cloudflared.exe"])
+
         print("Cloudflared process stopped.")
     except subprocess.CalledProcessError:
         print("Cloudflared process was not running.")
 
     # Delete tunnel
     try:
-        run_ps(f'"{CLOUDFLARED_PATH}" tunnel delete {tunnel_name}', check=False)
+        run_ps([CLOUDFLARED_PATH, "tunnel", "delete", {tunnel_name}])
+
         print("Tunnel deletion attempted.")
     except Exception as e:
         print(f"Tunnel deletion failed: {e}")
@@ -43,10 +45,8 @@ def uninstall_cloudflared():
             shutil.rmtree(CLOUDFLARED_DIR)
             shutil.rmtree(USER_CONFIG_FILES_DIR)
 
-            subprocess.run(
-                "winget uninstall --id Cloudflare.cloudflared -e --silent",
-                shell=True
-            )
+            run_ps(["winget", "uninstall", "--id", "Cloudflare.cloudflared", "-e", "--silent"])
+
             print(f"Cloudflared folder '{CLOUDFLARED_DIR}' deleted.")
             print(f"Cloudflared folder '{USER_CONFIG_FILES_DIR}' deleted.")
         except PermissionError:

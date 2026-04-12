@@ -17,6 +17,6 @@ def start_services():
         return
 
     print("API ready, starting tunnel...")
-    subprocess.Popen(
-        [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
-    )
+    # subprocess.Popen(
+    #     [CLOUDFLARED_PATH, "tunnel", "run", tunnel_name]
+    # )

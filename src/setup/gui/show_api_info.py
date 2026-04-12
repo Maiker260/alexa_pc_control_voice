@@ -9,7 +9,7 @@ def show_api_info(domain):
 
     win = Toplevel()
     win.title("Setup Completed")
-    win.geometry("400x250")
+    win.geometry("600x400")
 
     Label(win, text="Setup Completed!", font=("Arial", 12, "bold")).pack(pady=10)
 

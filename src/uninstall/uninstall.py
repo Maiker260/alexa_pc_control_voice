@@ -3,6 +3,7 @@ import os
 import shutil
 import ctypes
 import sys
+import time
 from src.utils.run_ps import run_ps
 from src.utils.run_cmd import run_cmd
 from src.utils.tunnel_data import tunnel_name
@@ -42,12 +43,14 @@ def uninstall_cloudflared():
 
     # Delete folders safely
     if os.path.exists(CLOUDFLARED_DIR):
+        time.sleep(2)
         shutil.rmtree(CLOUDFLARED_DIR)
         print("CLOUDFLARED_DIR deleted.")
     else:
         print("CLOUDFLARED_DIR not found, skipping.")
 
     if os.path.exists(USER_CONFIG_FILES_DIR):
+        time.sleep(2)
         shutil.rmtree(USER_CONFIG_FILES_DIR)
         print("USER_CONFIG_FILES_DIR deleted.")
     else:

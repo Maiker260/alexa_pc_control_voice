@@ -10,7 +10,7 @@ def health():
 @app.post("/alexa")
 async def alexa(request: Request):
     print(request.headers)
-    if not request.headers.get("cr-ray"):
+    if not request.headers.get("cf-ray"):
         raise HTTPException(status_code=403, detail="Forbidden")
     
     API_KEY = get_api_key()

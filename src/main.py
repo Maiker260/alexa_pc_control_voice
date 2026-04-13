@@ -9,6 +9,7 @@ def health():
 
 @app.post("/alexa")
 async def alexa(request: Request):
+    print(request.headers)
     if not request.headers.get("cr-ray"):
         raise HTTPException(status_code=403, detail="Forbidden")
     

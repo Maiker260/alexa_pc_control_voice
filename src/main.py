@@ -3,13 +3,13 @@ from src.utils.get_api_key import get_api_key
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/health-626089")
 def health():
     return {"status": "ok"}
 
 @app.post("/alexa")
 async def alexa(request: Request):
-    if request.headers.get("cr-ray"):
+    if not request.headers.get("cr-ray"):
         raise HTTPException(status_code=403, detail="Forbidden")
     
     API_KEY = get_api_key()

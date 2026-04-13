@@ -10,6 +10,7 @@ def health():
 @app.post("/alexa")
 async def alexa(request: Request):
     API_KEY = get_api_key()
+    print(request.headers.get("x-api-key"))
 
     if request.headers.get("x-api-key") != API_KEY:
         raise HTTPException(status_code=401, detail="Unauthorized")

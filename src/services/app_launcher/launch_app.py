@@ -16,7 +16,7 @@ def launch_app(data):
     path = find_app(name)
 
     if path:
-        open_app(path)
+        open_app(name, path)
 
         return {
             "message": "App opened",

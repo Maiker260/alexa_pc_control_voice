@@ -27,7 +27,14 @@ async def alexa(request: Request):
     
     try:
         result = handle_request(data)
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
 
-    return result
+        return {
+            "success": True,
+            "result": result
+        }
+
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e)
+        }

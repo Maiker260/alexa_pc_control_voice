@@ -19,7 +19,8 @@ def launch_app(data):
         open_app(path)
 
         return {
-            "status": "success"
+            "message": "App opened",
+            "app": name
         }
         
     else:

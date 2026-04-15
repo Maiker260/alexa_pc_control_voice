@@ -31,14 +31,14 @@ class Player:
     def __init__(self):
         self.process = None
 
-    def play_stream(self, name):
+    def play_stream(self, url):
         self.stop()
 
-        # self.process = subprocess.Popen([
-        #     "mpv",
-        #     url
-        # ])
-        subprocess.Popen(["mpv", f"ytsearch:{name}"])
+        self.process = subprocess.Popen(
+            ["mpv", url],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
 
     def stop(self):
         if self.process:

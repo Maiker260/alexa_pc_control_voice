@@ -24,14 +24,13 @@ class MusicPlayer:
                     song = self.queue.get_next()
 
             if song:
-                # url, title = get_stream(song)
+                url, title = get_stream(song)
 
                 # print(f"{title}")
 
                 # time.sleep(15)
 
-                self.player.play_stream(song)
-                # self.player.play_stream(url)
+                self.player.play_stream(url)
                 self.playing = True
 
             state = self.player.get_state()

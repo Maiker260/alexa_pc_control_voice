@@ -1,14 +1,17 @@
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, Response, HTTPException
 from src.utils.get_api_key import get_api_key
 from src.handlers.handle_request import handle_request
 
 app = FastAPI()
 
-@app.get("/health-626089")
-def health():
-    return {"status": "ok"}
+@app.middleware("http")
+async def block_unwanted(request: Request, call_next):
+    if request.url.path != "/alexapc" or request.method != "POST":
+        return Response(status_code=404)
+    
+    return await call_next
 
-@app.post("/alexa")
+@app.post("/alexapc")
 async def alexa(request: Request):
     if not request.headers.get("cf-ray"):
         raise HTTPException(status_code=403, detail="Forbidden")

@@ -21,6 +21,7 @@ def start_services():
     
     config_path = get_yaml_path()
 
+    # Run the API
     print("Starting tunnel...")
     try:
         subprocess.Popen([

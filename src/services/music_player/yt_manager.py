@@ -2,8 +2,9 @@ import yt_dlp
 
 def get_stream(name):
     ydl_opts = {
-        "format": "bestaudio",
-        "quiet": True
+        'format': 'bestaudio[ext=m4a]/bestaudio/best',
+        'quiet': True,
+        'noplaylist': True
     }
     
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:

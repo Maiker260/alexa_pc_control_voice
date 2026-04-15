@@ -9,8 +9,10 @@ from .player import Player
 class MusicPlayer:
     def __init__(self):
         self.queue = QueueManager()
+
         self.player = Player()
         self.playing = False
+
         self.thread = None
         self.lock = threading.Lock()
         self.running =  False
@@ -24,45 +26,14 @@ class MusicPlayer:
                     song = self.queue.get_next()
 
             if song:
-                # url, title = get_stream(song)
-
-                # print(f"{title}")
-
-                # time.sleep(15)
                 self.player.play_stream(song)
                 self.playing = True
 
-            state = self.player.get_state()
-
-            if state in [vlc.State.Ended, vlc.State.Stopped, vlc.State.Error]:
+            if self.player.process and self.player.process.poll() is not None:
                 self.playing = False
+                self.player.process = None
 
-            time.sleep(1)
-
-        # while self.running:
-        #     with self.lock:
-        #         if not self.playing:
-        #             song = self.queue.get_next()
-        #         else:
-        #             song = None
-
-        #     if song:
-        #         url, title = get_stream(song)
-
-        #         if not url:
-        #             print("Song not Found:", song)
-        #             continue
-
-        #         print(f"{title}")
-        #         self.player.play_stream(url)
-        #         self.playing = True
-
-        #     state = self.player.get_state()
-
-        #     if state in [vlc.State.Ended, vlc.State.Stopped, vlc.State.Error]:
-        #         self.playing = False
-
-        #     time.sleep(1)
+            time.sleep(0.5)
 
     def ensure_thread(self):
         if self.thread is None or not self.thread.is_alive():

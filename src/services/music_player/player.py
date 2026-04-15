@@ -1,31 +1,5 @@
-# import vlc
-
-# class Player:
-#     def __init__(self):
-#         self.player = None
-
-#     def play_stream(self, url):
-#         self.player = vlc.MediaPlayer(url)
-#         self.player.play()
-
-#     def stop(self):
-#         if self.player:
-#             self.player.stop()
-
-#     def pause(self):
-#         if self.player:
-#             self.player.pause()
-
-#     def resume(self):
-#         if self.player:
-#             self.player.play()
-
-#     def get_state(self):
-#         if self.player:
-#             return self.player.get_state()
-#         return None
-
 import subprocess
+import signal
 
 class Player:
     def __init__(self):
@@ -43,11 +17,10 @@ class Player:
             ["mpv", f"ytdl://ytsearch:{song}"],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
+            # stdout=subprocess.DEVNULL,
+            # stderr=subprocess.DEVNULL
             text=True
         )
-
-        for line in self.process.stdout:
-            print("[mpv]", line.strip())
 
     def stop(self):
         if self.process:
@@ -56,11 +29,11 @@ class Player:
 
     def pause(self):
         if self.process:
-            self.process.send_signal(19)  # SIGSTOP
+            self.process.send_signal(signal.SIGSTOP)
 
     def resume(self):
         if self.process:
-            self.process.send_signal(18)  # SIGCONT
+            self.process.send_signal(signal.SIGCONT)
 
     def get_state(self):
         if not self.process:

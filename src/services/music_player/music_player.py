@@ -17,20 +17,19 @@ class MusicPlayer:
 
     def loop(self):
         while self.running:
+            song = None
+
             with self.lock:
                 if not self.playing:
                     song = self.queue.get_next()
-                else:
-                    song = None
 
             if song:
                 url, title = get_stream(song)
 
-                if not url:
-                    print("Song not Found:", song)
-                    continue
-
                 print(f"{title}")
+
+                time.sleep(15)
+
                 self.player.play_stream(url)
                 self.playing = True
 
@@ -40,6 +39,31 @@ class MusicPlayer:
                 self.playing = False
 
             time.sleep(1)
+
+        # while self.running:
+        #     with self.lock:
+        #         if not self.playing:
+        #             song = self.queue.get_next()
+        #         else:
+        #             song = None
+
+        #     if song:
+        #         url, title = get_stream(song)
+
+        #         if not url:
+        #             print("Song not Found:", song)
+        #             continue
+
+        #         print(f"{title}")
+        #         self.player.play_stream(url)
+        #         self.playing = True
+
+        #     state = self.player.get_state()
+
+        #     if state in [vlc.State.Ended, vlc.State.Stopped, vlc.State.Error]:
+        #         self.playing = False
+
+        #     time.sleep(1)
 
     def ensure_thread(self):
         if self.thread is None or not self.thread.is_alive():

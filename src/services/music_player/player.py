@@ -41,12 +41,13 @@ class Player:
         # )
         self.process = subprocess.Popen(
             ["mpv", url],
-            stderr=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
             text=True
         )
 
-        for line in self.process.stderr:
-            print("[mpv ERROR]", line.strip())
+        for line in self.process.stdout:
+            print("[mpv]", line.strip())
 
     def stop(self):
         if self.process:

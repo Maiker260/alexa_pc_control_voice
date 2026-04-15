@@ -8,5 +8,5 @@ def get_stream(name):
             return None, None
 
         video = info['entries'][0]
-        
+        print(video)
         return video['url'], video['title']

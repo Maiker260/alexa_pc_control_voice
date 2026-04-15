@@ -4,6 +4,7 @@ from .open_app import open_app
 def launch_app(data):
     app_exception = {
         "lolito": "league of legends",
+        "disco": "discord"
     }
 
     app_name = data.get("app_name", "")

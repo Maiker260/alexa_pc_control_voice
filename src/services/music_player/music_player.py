@@ -24,6 +24,7 @@ class MusicPlayer:
                     song = None
 
             if song:
+                print(f"SONGR: {song}")
                 url, title = get_stream(song)
 
                 if not url:

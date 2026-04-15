@@ -29,7 +29,7 @@ class MusicPlayer:
                 # print(f"{title}")
 
                 # time.sleep(15)
-
+                print(F"URL: {url}")
                 self.player.play_stream(url)
                 self.playing = True
 

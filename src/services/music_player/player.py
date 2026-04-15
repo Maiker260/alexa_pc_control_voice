@@ -36,8 +36,8 @@ class Player:
 
         self.process = subprocess.Popen(
             ["mpv", url],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
+            # stdout=subprocess.DEVNULL,
+            # stderr=subprocess.DEVNULL
         )
 
     def stop(self):

@@ -14,5 +14,5 @@ def get_stream(name):
             return None, None
         
         video = info['entries'][0]
-        print(f"VIDEOR: {video}")
+
         return video['webpage_url'], video['title']

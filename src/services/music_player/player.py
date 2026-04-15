@@ -8,18 +8,10 @@ class Player:
     def play_stream(self, song):
         self.stop()
 
-        # self.process = subprocess.Popen(
-        #     ["mpv", url],
-        #     # stdout=subprocess.DEVNULL,
-        #     # stderr=subprocess.DEVNULL
-        # )
         self.process = subprocess.Popen(
             ["mpv", f"ytdl://ytsearch:{song}"],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            # stdout=subprocess.DEVNULL,
-            # stderr=subprocess.DEVNULL
-            text=True
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
 
     def stop(self):

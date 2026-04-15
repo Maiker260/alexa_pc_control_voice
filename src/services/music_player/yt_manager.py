@@ -13,7 +13,6 @@ def get_stream(name):
         if not info.get('entries'):
             return None, None
         
-        print(f"INFOR: {info}")
         video = info['entries'][0]
         print(f"VIDEOR: {video}")
-        return video['url'], video['title']
+        return video['webpage_url'], video['title']

@@ -31,7 +31,7 @@ class Player:
     def __init__(self):
         self.process = None
 
-    def play_stream(self, url):
+    def play_stream(self, song):
         self.stop()
 
         # self.process = subprocess.Popen(
@@ -40,7 +40,7 @@ class Player:
         #     # stderr=subprocess.DEVNULL
         # )
         self.process = subprocess.Popen(
-            ["mpv", url],
+            ["mpv", f"ytdl://ytsearch:{song}"],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True

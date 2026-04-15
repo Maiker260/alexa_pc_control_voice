@@ -34,11 +34,19 @@ class Player:
     def play_stream(self, url):
         self.stop()
 
+        # self.process = subprocess.Popen(
+        #     ["mpv", url],
+        #     # stdout=subprocess.DEVNULL,
+        #     # stderr=subprocess.DEVNULL
+        # )
         self.process = subprocess.Popen(
             ["mpv", url],
-            # stdout=subprocess.DEVNULL,
-            # stderr=subprocess.DEVNULL
+            stderr=subprocess.PIPE,
+            text=True
         )
+
+        for line in self.process.stderr:
+            print("[mpv ERROR]", line.strip())
 
     def stop(self):
         if self.process:

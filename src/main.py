@@ -9,7 +9,7 @@ async def block_unwanted(request: Request, call_next):
     if request.url.path != "/alexapc" or request.method != "POST":
         return Response(status_code=404)
     
-    return await call_next
+    return await call_next(request)
 
 @app.post("/alexapc")
 async def alexa(request: Request):

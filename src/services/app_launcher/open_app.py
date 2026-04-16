@@ -2,6 +2,11 @@ import subprocess
 import shutil
 
 def open_app(name, path=None):
+    # Third-party app installed
+    if path:
+        subprocess.Popen(f'explorer "{path}"', shell=True)
+        return
+
     # Apps included in the system PATH
     cmd = shutil.which(name) or shutil.which(name + ".exe")
     if cmd:
@@ -14,10 +19,5 @@ def open_app(name, path=None):
         return
     except:
         pass
-
-    # Third-party app installed
-    if path:
-        subprocess.Popen(f'explorer "{path}"', shell=True)
-        return
 
     raise RuntimeError("App cannot be opened")

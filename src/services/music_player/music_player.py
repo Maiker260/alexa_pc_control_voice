@@ -1,8 +1,6 @@
 import threading
 import time
-import vlc
 
-from .yt_manager import get_stream
 from .queue_manager import QueueManager
 from .player import Player
 

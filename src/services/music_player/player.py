@@ -19,6 +19,7 @@ class Player:
             self.process.terminate()
             self.process = None
 
+    # FIX PAUSE AND RESUME
     def pause(self):
         if self.process:
             self.process.send_signal(signal.SIGSTOP)

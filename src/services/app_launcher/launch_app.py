@@ -16,13 +16,12 @@ def launch_app(data):
 
     path = find_app(name)
 
-    if path:
+    try:
         open_app(name, path)
 
         return {
             "message": "App opened",
             "app": name
         }
-        
-    else:
+    except:
         raise RuntimeError("App not found")

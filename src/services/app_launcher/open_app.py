@@ -2,7 +2,6 @@ import subprocess
 import shutil
 
 def open_app(name, path=None):
-    print(f"name: {name} and path: {path}")
     # Third-party app installed
     if path:
         subprocess.Popen(f'explorer "{path}"', shell=True)

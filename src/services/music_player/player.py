@@ -1,4 +1,5 @@
 import subprocess
+import json
 
 from src.utils.send_music_command import send_music_command
 
@@ -35,7 +36,22 @@ class Player:
                 command = actions[vol_action]
             else:
                 raise ValueError("Invalid action: use 'vol_up', 'vol_down' or 'set_vol'")
+            
+            json_command = json.dumps({"command": command})
 
+            ps_script = f'''
+            $pipe = new-object System.IO.Pipes.NamedPipeClientStream(".", "mpvsocket", [System.IO.Pipes.PipeDirection]::Out);
+            $pipe.Connect();
+            $sw = new-object System.IO.StreamWriter($pipe);
+            $sw.WriteLine('{json_command}');
+            $sw.Flush();
+            $sw.Dispose();
+            $pipe.Dispose()
+            '''
+            print(json_command)
+            print()
+            print(ps_script)
+            
             return send_music_command(command)
 
     def stop(self):

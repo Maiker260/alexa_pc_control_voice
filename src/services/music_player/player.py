@@ -1,5 +1,4 @@
 import subprocess
-import signal
 
 from src.utils.send_music_command import send_music_command
 

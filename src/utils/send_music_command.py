@@ -1,6 +1,6 @@
 # import json
 
-# def send_music_comand(command):
+# def send_music_command(command):
 #     import win32pipe
 #     import win32file
 
@@ -31,7 +31,7 @@
 
 import subprocess
 
-def send_music_comand(command):
+def send_music_command(command):
 
     command = r'''
     $pipe = new-object System.IO.Pipes.NamedPipeClientStream(".", "mpvsocket", [System.IO.Pipes.PipeDirection]::Out);

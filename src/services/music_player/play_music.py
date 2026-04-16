@@ -29,8 +29,7 @@ def play_music(data):
     elif music_action == "volume":
         vol_action= data.get("vol_action", "")
         vol_value = parse_num(data.get("vol_value", 0))
-        print(f"music_action: {data.get("vol_value", 0)}")
-        print(f"ma_vol_value: {vol_value}")
+        
         actions[music_action](vol_action, vol_value)
         return {"message": f"Volume {vol_action}"}
 

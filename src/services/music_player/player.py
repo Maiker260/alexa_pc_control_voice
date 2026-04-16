@@ -11,11 +11,6 @@ class Player:
         self.stop()
 
         self.process = subprocess.Popen(
-            ["mpv", f"ytdl://ytsearch:{song}", "--volume=60"],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-        self.process = subprocess.Popen(
             [
                 "mpv", 
                 "--input-ipc-server=\\.\pipe\mpvsocket", 

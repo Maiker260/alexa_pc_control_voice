@@ -1,7 +1,7 @@
 import subprocess
 import signal
 
-from src.utils.send_music_command import send_music_comand
+from src.utils.send_music_command import send_music_command
 
 class Player:
     def __init__(self):
@@ -37,7 +37,7 @@ class Player:
             else:
                 raise ValueError("Invalid action: use 'vol_up', 'vol_down' or 'set_vol'")
 
-            return send_music_comand(command)
+            return send_music_command(command)
 
     def stop(self):
         if self.process:
@@ -46,10 +46,10 @@ class Player:
 
     def pause(self):
         if self.process:
-            return send_music_comand(["set", "pause", True])
+            return send_music_command(["set", "pause", True])
 
     def resume(self):
         if self.process:
-            return send_music_comand(["set", "pause", False])
+            return send_music_command(["set", "pause", False])
     
     

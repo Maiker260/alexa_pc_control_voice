@@ -1,4 +1,5 @@
 from .music_player import MusicPlayer
+from src.utils.parse_num import parse_num
 
 music_player = MusicPlayer()
 
@@ -27,7 +28,7 @@ def play_music(data):
     
     elif music_action == "volume":
         vol_action= data.get("vol_action", "")
-        vol_value= data.get("vol_value", 5)
+        vol_value = parse_num(data.get("vol_value", 0))
 
         actions[music_action](vol_action, vol_value)
         return {"message": f"Volume {vol_action}"}

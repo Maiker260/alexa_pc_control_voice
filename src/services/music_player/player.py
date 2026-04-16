@@ -22,7 +22,8 @@ class Player:
         )
     
     def volume_control(self, vol_action, vol_value):
-        vol_value = 5 if not vol_value else vol_value
+        if vol_value is None:
+            vol_value = 5
 
         actions = {
             "vol_up": ["add", "volume", vol_value],
@@ -34,7 +35,7 @@ class Player:
             if vol_action in actions:
                 command = actions[vol_action]
             else:
-                raise ValueError("Invalid action: use 'up', 'down' or 'set'")
+                raise ValueError("Invalid action: use 'vol_up', 'vol_down' or 'set_vol'")
 
             return send_music_comand(command)
 

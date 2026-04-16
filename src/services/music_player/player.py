@@ -27,7 +27,7 @@ class Player:
         actions = {
             "vol_up": ["add", "volume", vol_value],
             "vol_down": ["add", "volume", -vol_value],
-            "set": ["set", "volume", vol_value]
+            "set_vol": ["set", "volume", vol_value]
         }
 
         if self.process:

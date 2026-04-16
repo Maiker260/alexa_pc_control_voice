@@ -21,9 +21,12 @@ def send_music_comand(command):
         )
 
         win32file.WriteFile(handle, message.encode())
+        result, data = win32file.ReadFile(handle, 4096)
         handle.close()
 
-        return True
+        response = json.loads(data.decode())
+
+        return response
 
     except Exception as e:
         print(f"Error sending command: {e}")

@@ -35,25 +35,30 @@ class MusicPlayer:
 
     def ensure_thread(self):
         if self.thread is None or not self.thread.is_alive():
-            print("Starting thread")
             self.running = True
             self.thread = threading.Thread(target=self.loop, daemon=True)
             self.thread.start()
 
     def play(self, song):
+        print("Playing Music...")
         with self.lock:
             self.queue.add(song)
 
         self.ensure_thread()
+
+    def volume_control(self, vol_action, vol_value):
+        self.player.volume_control(vol_action, vol_value)
 
     def skip(self):
         self.player.stop()
         self.playing = False
 
     def pause(self):
+        print("Pausing the Music...")
         self.player.pause()
 
     def resume(self):
+        print("Resuming the Music...")
         self.player.resume()
 
     def stop(self):

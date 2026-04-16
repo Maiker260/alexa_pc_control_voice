@@ -12,6 +12,7 @@ def play_music(data):
         "pause": music_player.pause,
         "resume": music_player.resume,
         "stop": music_player.stop,
+        "volume": music_player.volume_control
     }
 
     if music_action not in actions:
@@ -23,6 +24,13 @@ def play_music(data):
 
         actions[music_action](song)
         return {"message": f"Added: {song}"}
+    
+    elif music_action == "volume":
+        vol_action= data.get("vol_action", "")
+        vol_value= data.get("vol_value", 5)
+
+        actions[music_action](vol_action, vol_value)
+        return {"message": f"Volume {vol_action}"}
 
     else:
         actions[music_action]()

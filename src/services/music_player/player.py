@@ -13,7 +13,7 @@ class Player:
         self.process = subprocess.Popen(
             [
                 "mpv", 
-                "--input-ipc-server=\\.\pipe\mpvsocket", 
+                r"--input-ipc-server=\\.\pipe\mpvsocket", 
                 "--volume=60",
                 f"ytdl://ytsearch:{song}", 
             ],

@@ -45,10 +45,10 @@ class Player:
 
     def pause(self):
         if self.process:
-            return send_music_command(["set", "pause", True])
+            return send_music_command(["cycle", "pause"])
 
     def resume(self):
         if self.process:
-            return send_music_command(["set", "pause", False])
+            return send_music_command(["cycle", "pause"])
     
     

@@ -25,7 +25,6 @@ def send_music_comand(command):
         handle.close()
 
         response = json.loads(data.decode())
-        print(response)
         return response
 
     except Exception as e:

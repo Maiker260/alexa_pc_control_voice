@@ -17,7 +17,6 @@ def get_playlists_from_config(playlist_kwd):
 
     for item in data:
         for keyword in item.get("keywords", []):
-            print(f"Keyword: {keyword}")
             if keyword.lower() in playlist_kwd:
                 return item.get("url")
 

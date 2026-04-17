@@ -29,9 +29,9 @@ def play_music(data):
         return {"message": f"Added: {song}"}
     
     elif music_action == "playlist":
-        playlist_name = data.get("playlist_name", "")
-
-        playlist_url = get_playlists_from_config(playlist_name)
+        playlist_kwd = data.get("playlist_kwd", "")
+        print(f"Playlist KWD: {playlist_kwd}")
+        playlist_url = get_playlists_from_config(playlist_kwd)
 
         if not playlist_url:
             raise ValueError("Playlist not found in the file.")

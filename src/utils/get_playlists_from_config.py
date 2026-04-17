@@ -8,7 +8,7 @@ def get_playlists_from_config(playlist_kwd):
     config_dir.mkdir(parents=True, exist_ok=True)
 
     playlist_path = config_dir / "playlists.json"
-
+    print(f"Playlist Path: {playlist_path}")
     if not playlist_path.exists():
         return None
 
@@ -16,9 +16,10 @@ def get_playlists_from_config(playlist_kwd):
         data = json.load(f)
 
     playlist_kwd = playlist_kwd.lower().strip()
-
+    print(f"DATA: {data}")
     for item in data:
         for keyword in item.get("keywords", []):
+            print(f"Keyword: {keyword}")
             if playlist_kwd == keyword.lower():
                 return item.get("url")
 

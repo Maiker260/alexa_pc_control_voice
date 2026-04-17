@@ -10,17 +10,19 @@ def get_playlists_from_config(playlist_kwd):
     playlist_path = config_dir / "playlists.json"
     print(f"Playlist Path: {playlist_path}")
     if not playlist_path.exists():
+        print("Paylist not found")
         return None
+    
+    print(f"Playlist KWD: {playlist_kwd}")
 
-    with open(playlist_path) as f:
+    with open(playlist_path, encoding="utf-8") as f:
         data = json.load(f)
 
-    playlist_kwd = playlist_kwd.lower().strip()
     print(f"DATA: {data}")
     for item in data:
         for keyword in item.get("keywords", []):
             print(f"Keyword: {keyword}")
-            if playlist_kwd == keyword.lower():
+            if keyword.lower() in playlist_kwd:
                 return item.get("url")
 
     return None

@@ -30,7 +30,7 @@ def play_music(data):
     
     elif music_action == "playlist":
         playlist_kwd = data.get("playlist_kwd", "")
-        print(f"Playlist KWD: {playlist_kwd}")
+
         playlist_url = get_playlists_from_config(playlist_kwd)
 
         if not playlist_url:

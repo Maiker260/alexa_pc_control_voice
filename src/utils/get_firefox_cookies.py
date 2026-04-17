@@ -4,12 +4,12 @@ from .PATHS import USER_CONFIG_FILES_DIR
 
 def get_firefox_cookies():
     cj = browser_cookie3.firefox(domain_name='.youtube.com')
-    print("Cookie")
+
     config_dir = Path(USER_CONFIG_FILES_DIR)
     config_dir.mkdir(parents=True, exist_ok=True)
 
     cookies_path = config_dir / "U2ck.txt"
-    print(f"Cookie File: {cookies_path}")
+
     with open(cookies_path, "w", encoding="utf-8") as f:
         f.write("# Netscape HTTP Cookie File\n")
 
@@ -32,5 +32,5 @@ def get_firefox_cookies():
                 f"{c.name}\t"
                 f"{c.value}\n"
             )
-            
+
     return cookies_path

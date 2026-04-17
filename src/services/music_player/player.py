@@ -6,19 +6,6 @@ class Player:
     def __init__(self):
         self.process = None
 
-    # def play_stream(self, song):
-    #     self.stop()
-
-    #     self.process = subprocess.Popen(
-    #         [
-    #             "mpv", 
-    #             r"--input-ipc-server=\\.\pipe\mpvsocket", 
-    #             "--volume=60",
-    #             f"ytdl://ytsearch:{song}", 
-    #         ],
-    #         stdout=subprocess.DEVNULL,
-    #         stderr=subprocess.DEVNULL,
-    #     )
     def play_stream(self, song):
         self.stop()
 

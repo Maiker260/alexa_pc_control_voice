@@ -9,6 +9,7 @@ from .send_music_command import send_music_command
 from .parse_num import parse_num
 from .get_playlist_urls import get_playlist_urls
 from .get_firefox_cookies import get_firefox_cookies
+from .get_playlists_from_config import get_playlists_from_config
 
 __all__ = [
     "load_user_config", 
@@ -26,5 +27,6 @@ __all__ = [
     "send_music_command", 
     "parse_num", 
     "get_playlist_urls", 
-    "get_firefox_cookies"
+    "get_firefox_cookies",
+    "get_playlists_from_config"
 ]

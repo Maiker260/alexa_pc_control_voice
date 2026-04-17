@@ -1,5 +1,6 @@
 from .music_player import MusicPlayer
 from src.utils.parse_num import parse_num
+from src.utils.get_playlists_from_config import get_playlists_from_config
 
 music_player = MusicPlayer()
 
@@ -29,13 +30,11 @@ def play_music(data):
     
     elif music_action == "playlist":
         playlist_name = data.get("playlist_name", "")
-        print(f"Playlist received: {playlist_name}")
-        # NEED TO CHECK A CONFIG FILE FIRST TO GRAB THE PLAYLIST URL
-        # playlist_url = "URL GRABBED FROM CONFIG_FILE"
-        playlist_url = "https://www.youtube.com/playlist?list=WL"
+
+        playlist_url = get_playlists_from_config(playlist_name)
 
         if not playlist_url:
-            raise ValueError("Missing playlist_url")
+            raise ValueError("Playlist not found in the file.")
 
         actions[music_action](playlist_url)
         return {"message": "Playlist loaded"}

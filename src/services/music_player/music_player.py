@@ -3,6 +3,7 @@ import time
 
 from .queue_manager import QueueManager
 from .player import Player
+from src.utils.get_playlist_urls import get_playlist_urls
 
 class MusicPlayer:
     def __init__(self):
@@ -43,6 +44,17 @@ class MusicPlayer:
         print("Playing Music...")
         with self.lock:
             self.queue.add(song)
+
+        self.ensure_thread()
+
+    def play_playlist(self, playlist_url):
+        print("Loading playlist...")
+
+        urls = get_playlist_urls(playlist_url)
+
+        with self.lock:
+            for url in urls:
+                self.queue.add(url)
 
         self.ensure_thread()
 

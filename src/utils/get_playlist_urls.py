@@ -4,8 +4,9 @@ from pathlib import Path
 from .get_firefox_cookies import get_firefox_cookies
 
 def get_playlist_urls(playlist_url):
+    print(f"Playlist URL get_play: {playlist_url}")
     cookies_path = Path(get_firefox_cookies())
-
+    print(f"Cookies Path: {cookies_path}")
     if cookies_path.stat().st_mtime < (time.time() - 3600):
         cookies_path = Path(get_firefox_cookies())
 

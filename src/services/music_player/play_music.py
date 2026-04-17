@@ -29,7 +29,7 @@ def play_music(data):
     
     elif music_action == "playlist":
         playlist_name = data.get("playlist_name", "")
-        print(playlist_name)
+        print(f"Playlist received: {playlist_name}")
         # NEED TO CHECK A CONFIG FILE FIRST TO GRAB THE PLAYLIST URL
         # playlist_url = "URL GRABBED FROM CONFIG_FILE"
         playlist_url = "https://www.youtube.com/playlist?list=WL"

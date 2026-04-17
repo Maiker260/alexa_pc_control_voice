@@ -9,7 +9,7 @@ def get_firefox_cookies():
     config_dir.mkdir(parents=True, exist_ok=True)
 
     cookies_path = config_dir / "U2ck.txt"
-
+    print(f"Cookie File: {cookies_path}")
     with open(cookies_path, "w", encoding="utf-8") as f:
         f.write("# Netscape HTTP Cookie File\n")
 
@@ -32,3 +32,5 @@ def get_firefox_cookies():
                 f"{c.name}\t"
                 f"{c.value}\n"
             )
+            
+    return cookies_path

@@ -1,6 +1,7 @@
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.12.1
+browser-cookie3==0.20.1
 certifi==2026.2.25
 charset-normalizer==3.4.7
 click==8.1.8
@@ -8,6 +9,8 @@ exceptiongroup==1.3.1
 fastapi==0.128.8
 h11==0.16.0
 idna==3.11
+lz4==4.4.5
+pycryptodomex==3.23.0
 pydantic==2.12.5
 pydantic_core==2.41.5
 python-vlc==3.0.21203

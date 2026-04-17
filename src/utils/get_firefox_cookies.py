@@ -4,7 +4,7 @@ from .PATHS import USER_CONFIG_FILES_DIR
 
 def get_firefox_cookies():
     cj = browser_cookie3.firefox(domain_name='.youtube.com')
-
+    print("Cookie")
     config_dir = Path(USER_CONFIG_FILES_DIR)
     config_dir.mkdir(parents=True, exist_ok=True)
 

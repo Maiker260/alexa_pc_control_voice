@@ -1,16 +1,15 @@
 import ctypes
 import sys
 import os
+from src.utils.show_popup import show_popup
 
 def ensure_admin():
     if ctypes.windll.shell32.IsUserAnAdmin():
         return
 
-    ctypes.windll.user32.MessageBoxW(
-        0,
+    show_popup(
         "The application will restart with administrator privileges.",
         "Permission Required",
-        0x40
     )
 
     params = " ".join([f'"{arg}"' for arg in sys.argv])

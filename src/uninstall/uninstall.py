@@ -1,4 +1,3 @@
-from src.utils.ensure_admin import ensure_admin
 from src.utils.remove_directory import remove_directory
 from src.utils.remove_files import remove_files
 from .processes.cloudflare.stop_cloudflared import stop_cloudflared
@@ -7,13 +6,11 @@ from .processes.cloudflare.remove_user_config import remove_user_config
 from .processes.cloudflare.uninstall_cloudflared_package import uninstall_cloudflared_package
 from .processes.media_player.uninstall_media_tools import uninstall_media_tools
 from src.utils.PATHS import CLOUDFLARED_DIR, USER_CONFIG_FILES_DIR
-from utils.show_popup import show_popup
+from src.utils.show_popup import show_popup
 
 def uninstall():
     uninstall_media_tools()
     print("Media Player removed successfully")
-
-    ensure_admin()
 
     stop_cloudflared()
     delete_tunnel()

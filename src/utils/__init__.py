@@ -13,7 +13,6 @@ from .get_playlists_from_config import get_playlists_from_config
 from .remove_directory import remove_directory
 from .remove_files import remove_files
 from .is_admin import is_admin
-from .ensure_admin import ensure_admin
 from .is_installed import is_installed
 from .show_popup import show_popup
 
@@ -38,7 +37,6 @@ __all__ = [
     "remove_directory",
     "remove_files",
     "is_admin",
-    "ensure_admin",
     "is_installed",
     "show_popup"
 ]

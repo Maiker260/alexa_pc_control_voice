@@ -3,7 +3,6 @@ from .processes.media_player_setup import media_player_setup
 from .config.create_config_file import create_config_file
 from .config.save_app_config import save_app_config
 from .processes.generate_api_key import generate_api_key
-from src.utils.ensure_admin import ensure_admin
 from src.utils.tunnel_data import tunnel_name
 
 def run_setup(domain: str, log=None):
@@ -15,8 +14,6 @@ def run_setup(domain: str, log=None):
             print(f"{prefix} {msg}")
 
     try:
-        ensure_admin()
-
         write("Generating API Key...")
         api_key = generate_api_key()
 

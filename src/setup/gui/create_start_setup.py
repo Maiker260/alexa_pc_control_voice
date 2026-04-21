@@ -5,7 +5,7 @@ def create_start_setup(root, on_submit_callback, log):
         title = "Setup Complete"
         message = (
             "Setup completed successfully!\n\n"
-            "Next steps:\n"
+            "Next steps:\n\n"
             "1. Enable the Alexa skill: 'Alexa, vamoa jugar'\n"
             f"2. Configure your domain: 'Configura mi dominio {domain}'\n"
             "3. Add your device: 'Agrega mi nuevo dispositivo 12345'\n"

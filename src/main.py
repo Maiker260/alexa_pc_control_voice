@@ -16,9 +16,9 @@ async def alexa(request: Request):
     if not request.headers.get("cf-ray"):
         raise HTTPException(status_code=403, detail="Forbidden")
     
+    print(request.headers.get("x-api-key"))
     API_KEY = get_api_key()
     # NEED TO DELETE THE PRINT
-    print(request.headers.get("x-api-key"))
 
     if request.headers.get("x-api-key") != API_KEY:
         raise HTTPException(status_code=401, detail="Unauthorized")

@@ -1,7 +1,7 @@
-from src.uninstall.uninstall import uninstall_cloudflared
+from src.uninstall.uninstall import uninstall
 
 def main():
-    uninstall_cloudflared()
+    uninstall()
 
 if __name__ == "__main__":
     main()

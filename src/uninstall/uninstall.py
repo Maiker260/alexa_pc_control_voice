@@ -1,65 +1,25 @@
-import subprocess
-import os
-import shutil
-import ctypes
-import sys
-import time
-from src.utils.run_ps import run_ps
-from src.utils.run_cmd import run_cmd
-from src.utils.tunnel_data import tunnel_name
-from src.utils.PATHS import CLOUDFLARED_PATH, CLOUDFLARED_DIR, USER_CONFIG_FILES_DIR
+from src.utils.ensure_admin import ensure_admin
+from src.utils.remove_directory import remove_directory
+from src.utils.remove_files import remove_files
+from .processes.cloudflare.stop_cloudflared import stop_cloudflared
+from .processes.cloudflare.delete_tunnel import delete_tunnel
+from .processes.cloudflare.remove_user_config import remove_user_config
+from .processes.cloudflare.uninstall_cloudflared_package import uninstall_cloudflared_package
+from .processes.media_player.uninstall_media_tools import uninstall_media_tools
+from src.utils.PATHS import CLOUDFLARED_DIR, USER_CONFIG_FILES_DIR
 
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
+def uninstall():
+    uninstall_media_tools()
+    print("Media Player removed successfully")
 
-def uninstall_cloudflared():
-    if not is_admin():
-        ctypes.windll.shell32.ShellExecuteW(
-            None, "runas", sys.executable, " ".join(sys.argv), None, 1
-        )
-        sys.exit()
+    ensure_admin()
 
-    # Stop process
-    try:
-        run_cmd(["taskkill", "/F", "/IM", CLOUDFLARED_PATH])
-        print("Cloudflared process stopped.")
-    except subprocess.CalledProcessError:
-        print("Cloudflared process was not running.")
+    stop_cloudflared()
+    delete_tunnel()
+    remove_user_config()
 
-    # Delete tunnel
-    try:
-        run_cmd([CLOUDFLARED_PATH, "tunnel", "delete", tunnel_name])
-        print("Tunnel deletion attempted.")
-    except subprocess.CalledProcessError:
-        print("Tunnel not found or already deleted. Skipping.")
+    remove_directory(CLOUDFLARED_DIR, "CLOUDFLARED_DIR")
+    remove_files(USER_CONFIG_FILES_DIR, ["app_config.json", "U2ck.txt"])
 
-    # Remove certs / login data
-    run_ps(
-        'if (Test-Path $env:USERPROFILE\\.cloudflared) { Remove-Item -Recurse -Force $env:USERPROFILE\\.cloudflared }'
-    )
-
-    # Delete folders safely
-    if os.path.exists(CLOUDFLARED_DIR):
-        time.sleep(2)
-        shutil.rmtree(CLOUDFLARED_DIR)
-        print("CLOUDFLARED_DIR deleted.")
-    else:
-        print("CLOUDFLARED_DIR not found, skipping.")
-
-    if os.path.exists(USER_CONFIG_FILES_DIR):
-        time.sleep(2)
-        shutil.rmtree(USER_CONFIG_FILES_DIR)
-        print("USER_CONFIG_FILES_DIR deleted.")
-    else:
-        print("USER_CONFIG_FILES_DIR not found, skipping.")
-
-    # Uninstall via winget
-    try:
-        run_ps('winget uninstall --id Cloudflare.cloudflared -e --silent')
-    except subprocess.CalledProcessError:
-        print("Cloudflared not installed via winget or already removed.")
-
+    uninstall_cloudflared_package()
     print("Cloudflared removed successfully")

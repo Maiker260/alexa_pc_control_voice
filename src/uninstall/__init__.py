@@ -1,3 +1,3 @@
-from .uninstall import uninstall_cloudflared
+from .uninstall import uninstall
 
-__all__ = ["uninstall_cloudflared"]
+__all__ = ["uninstall"]

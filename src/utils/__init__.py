@@ -10,6 +10,10 @@ from .parse_num import parse_num
 from .get_playlist_urls import get_playlist_urls
 from .get_firefox_cookies import get_firefox_cookies
 from .get_playlists_from_config import get_playlists_from_config
+from .remove_directory import remove_directory
+from .remove_files import remove_files
+from .is_admin import is_admin
+from .ensure_admin import ensure_admin
 
 __all__ = [
     "load_user_config", 
@@ -28,5 +32,9 @@ __all__ = [
     "parse_num", 
     "get_playlist_urls", 
     "get_firefox_cookies",
-    "get_playlists_from_config"
+    "get_playlists_from_config",
+    "remove_directory",
+    "remove_files",
+    "is_admin",
+    "ensure_admin"
 ]

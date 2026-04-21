@@ -1,6 +1,5 @@
-import os
 from .create_credentials_file import get_credentials_file
-from src.utils.PATHS import USER_DATA_DIR
+from src.utils.get_config_path import get_yaml_path
 
 def create_config_file(domain):
     credentials_file = get_credentials_file()
@@ -15,8 +14,7 @@ ingress:
   - service: http_status:404
 """
 
-    # Need to replace and use "get_yaml_path()"
-    path = os.path.join(USER_DATA_DIR, "config.yml")
+    path = get_yaml_path()
 
     with open(path, "w") as f:
         f.write(config)

@@ -7,6 +7,7 @@ from .processes.cloudflare.remove_user_config import remove_user_config
 from .processes.cloudflare.uninstall_cloudflared_package import uninstall_cloudflared_package
 from .processes.media_player.uninstall_media_tools import uninstall_media_tools
 from src.utils.PATHS import CLOUDFLARED_DIR, USER_CONFIG_FILES_DIR
+from src.utils.show_up import show_popup
 
 def uninstall():
     uninstall_media_tools()
@@ -23,3 +24,5 @@ def uninstall():
 
     uninstall_cloudflared_package()
     print("Cloudflared removed successfully")
+
+    show_popup("Uninstall Complete", "All components were successfully removed.")

@@ -15,6 +15,7 @@ from .remove_files import remove_files
 from .is_admin import is_admin
 from .ensure_admin import ensure_admin
 from .is_installed import is_installed
+from .show_up import show_popup
 
 __all__ = [
     "load_user_config", 
@@ -38,5 +39,6 @@ __all__ = [
     "remove_files",
     "is_admin",
     "ensure_admin",
-    "is_installed"
+    "is_installed",
+    "show_popup"
 ]

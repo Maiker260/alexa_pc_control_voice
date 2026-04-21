@@ -14,7 +14,4 @@ def load_user_config():
     except json.JSONDecodeError:
         raise RuntimeError("Invalid JSON in app_config.json")
 
-    if "api_key" not in config or not config["api_key"]:
-        raise RuntimeError("Missing or empty 'api_key' in config")
-
     return config

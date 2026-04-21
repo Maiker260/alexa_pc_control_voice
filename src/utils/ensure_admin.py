@@ -1,10 +1,20 @@
 import ctypes
 import sys
-from .is_admin import is_admin
+import os
 
 def ensure_admin():
-    if not is_admin():
-        ctypes.windll.shell32.ShellExecuteW(
-            None, "runas", sys.executable, " ".join(sys.argv), None, 1
-        )
-        sys.exit()
+    if ctypes.windll.shell32.IsUserAnAdmin():
+        return
+
+    params = " ".join([f'"{arg}"' for arg in sys.argv])
+    
+    ctypes.windll.shell32.ShellExecuteW(
+        None,
+        "runas",
+        sys.executable,
+        params,
+        None,
+        1
+    )
+
+    os._exit(0)

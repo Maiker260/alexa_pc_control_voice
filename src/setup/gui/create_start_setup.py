@@ -2,6 +2,7 @@ from src.utils.show_popup import show_popup
 def create_start_setup(root, on_submit_callback, log):
 
     def start_setup(domain):
+        title = "Setup Complete"
         message = (
             "Setup completed successfully!\n\n"
             "Next steps:\n"
@@ -10,11 +11,9 @@ def create_start_setup(root, on_submit_callback, log):
             "3. Add your device: 'Agrega mi nuevo dispositivo 12345'\n"
         )
 
-        title = "Setup Complete"
-
         try:
             on_submit_callback(domain, log=log)
-            root.after(0, lambda: show_popup(message, title))
+            root.after(0, lambda: show_popup(title, message))
         except Exception as e:
             log(f"Error: {e}")
 

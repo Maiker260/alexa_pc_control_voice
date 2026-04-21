@@ -1,4 +1,5 @@
 import ctypes
 
 def show_popup(title, message):
-    ctypes.windll.user32.MessageBoxW(0, message, title, 0)
+    MB_ICONINFORMATION = 0x40
+    ctypes.windll.user32.MessageBoxW(0, message, title, MB_ICONINFORMATION)

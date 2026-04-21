@@ -3,27 +3,31 @@ from .processes.media_player_setup import media_player_setup
 from .config.create_config_file import create_config_file
 from .config.save_app_config import save_app_config
 from .processes.generate_api_key import generate_api_key
+from src.utils.ensure_admin import ensure_admin
 from src.utils.tunnel_data import tunnel_name
 
 def run_setup(domain: str, log=None):
     def write(msg):
+        prefix = "[SETUP]"
         if log:
-            log(msg)
+            log(f"{prefix} {msg}")
         else:
-            print(msg)
+            print(f"{prefix} {msg}")
 
     try:
+        ensure_admin()
+
         write("Generating API Key...")
         api_key = generate_api_key()
 
-        write("Installing Cloudflare Components")
+        write("Installing Cloudflare Components...")
         cloudflared_setup(write, domain, log)
-
-        write("Creating config.yml...")
-        create_config_file(domain)
 
         write("Installing Media Player Components...")
         media_player_setup(write)
+
+        write("Creating config.yml...")
+        create_config_file(domain)
 
         write("Saving Configuration...")
         save_app_config(domain, api_key, tunnel_name)

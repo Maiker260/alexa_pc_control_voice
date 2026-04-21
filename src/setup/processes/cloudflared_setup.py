@@ -2,11 +2,11 @@ from .cloudflare.login import login
 from .cloudflare.create_tunnel import create_tunnel
 from .cloudflare.route_dns import route_dns
 from .cloudflare.install_cloudflared import install_cloudflared
-from .cloudflare.is_cloudflared_installed import is_cloudflared_installed
+from src.utils.is_installed import is_installed
 from src.utils.tunnel_data import tunnel_name
 
 def cloudflared_setup(write, domain, log):
-    if not is_cloudflared_installed():
+    if not is_installed("cloudflared"):
         write("Installing Cloudflared Software...")
         install_cloudflared()
 

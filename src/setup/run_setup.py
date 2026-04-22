@@ -15,7 +15,7 @@ def run_setup(domain: str, log=None):
             print(f"{prefix} {msg}")
 
     try:
-        write("Generating API Key...")
+        write("Generating secure device credentials...")
         pair_code, api_key, secret_code = register_pair_code(domain)
 
         write("Installing Cloudflare Components...")

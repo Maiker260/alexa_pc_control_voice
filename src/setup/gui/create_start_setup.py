@@ -1,4 +1,5 @@
 from src.utils.show_popup import show_popup
+
 def create_start_setup(root, on_submit_callback, log):
 
     def start_setup(domain):

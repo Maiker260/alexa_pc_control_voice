@@ -19,7 +19,7 @@ def register_pair_code(domain):
     }
 
     requests.post(
-        "https://tu-api/register",
+        "https://https://nuizq83slj.execute-api.us-east-1.amazonaws.com/register",
         json=data,
     )
 

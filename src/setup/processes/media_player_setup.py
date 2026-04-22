@@ -11,4 +11,4 @@ def media_player_setup(write):
         write("Installing yt-dlp...")
         install_yt_dlp()
 
-    write("Cloudflared setup done.")
+    write("Media Player setup done.")

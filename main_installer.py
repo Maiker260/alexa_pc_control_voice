@@ -2,7 +2,7 @@ from src.setup.run_gui import run_gui
 from src.setup.run_setup import run_setup
 
 def pipeline(domain, log=None):
-    run_setup(domain, log=log)
+    return run_setup(domain, log=log)
 
 
 def main():

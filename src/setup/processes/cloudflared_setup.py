@@ -11,6 +11,7 @@ def cloudflared_setup(write, domain, log):
         install_cloudflared()
 
     write("Logging into Cloudflared...")
+    write("A browser window will open. Please select your domain and authorize it to continue.", True)
     login()
 
     write("Creating Cloudflared Tunnel...")

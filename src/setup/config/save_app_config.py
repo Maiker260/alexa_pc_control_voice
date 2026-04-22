@@ -1,10 +1,11 @@
 import json
 from src.utils.get_config_path import get_config_path
 
-def save_app_config(domain, api_key, tunnel_name):
+def save_app_config(domain, api_key, secret_code, tunnel_name):
     config = {
         "domain": domain,
         "api_key": api_key,
+        "device_secret": secret_code,
         "tunnel_name": tunnel_name
     }
 

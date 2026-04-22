@@ -2,18 +2,20 @@ from src.utils.show_popup import show_popup
 def create_start_setup(root, on_submit_callback, log):
 
     def start_setup(domain):
-        title = "Setup Complete"
-        message = (
-            "Setup completed successfully!\n\n"
-            "Next steps:\n\n"
-            "1. Enable the Alexa skill: 'Alexa, vamoa jugar'\n"
-            f"2. Configure your domain: 'Configura mi dominio {domain}'\n"
-            "3. Add your device: 'Agrega mi nuevo dispositivo 12345'\n"
-        )
-
         try:
-            on_submit_callback(domain, log=log)
-            root.after(0, lambda: show_popup(title, message))
+            pair_code = on_submit_callback(domain, log=log)
+            
+            title = "Setup Complete"
+            message = (
+                "Setup completed successfully!\n\n"
+                "Next steps:\n\n"
+                "1. Enable the Alexa skill. Say: 'Alexa, vamoa jugar'\n"
+                "2. Say: 'Iniciar configuración'\n"
+                f"3. Say: 'Mi código es {pair_code}'\n"
+            )
+
+            root.after(0, lambda: show_popup(root, title, message))
+
         except Exception as e:
             log(f"Error: {e}")
 

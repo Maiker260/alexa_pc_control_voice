@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, Response, HTTPException
-from src.utils.get_api_key import get_api_key
+from src.utils.get_keys import get_keys
 from src.handlers.handle_request import handle_request
 
 app = FastAPI()
@@ -12,17 +12,14 @@ async def block_unwanted(request: Request, call_next):
     return await call_next(request)
 
 @app.post("/alexapc")
-async def alexa(request: Request):
-    if not request.headers.get("cf-ray"):
-        raise HTTPException(status_code=403, detail="Forbidden")
-    
-    API_KEY = get_api_key()
-    # NEED TO DELETE THE PRINT
-    print(request.headers.get("x-api-key"))
-
+async def alexa(request: Request):    
+    API_KEY, DEVICE_SECRET = get_keys()
 
     if request.headers.get("x-api-key") != API_KEY:
-        raise HTTPException(status_code=401, detail="Unauthorized")
+        raise HTTPException(status_code=401)
+    
+    if request.headers.get("x-device-secret") != DEVICE_SECRET:
+        raise HTTPException(status_code=403)
     
     try:
         data = await request.json()

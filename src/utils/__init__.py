@@ -1,6 +1,6 @@
 from .run_cmd import run_cmd
 from .run_ps import run_ps
-from .get_api_key import get_api_key
+from .get_keys import get_keys
 from .tunnel_data import tunnel_name
 from .load_user_config import load_user_config
 from .get_config_path import get_yaml_path, get_config_path, get_app_dir
@@ -18,7 +18,7 @@ from .show_popup import show_popup
 
 __all__ = [
     "load_user_config", 
-    "get_api_key", 
+    "get_keys", 
     "tunnel_name", 
     "run_cmd", 
     "run_ps", 

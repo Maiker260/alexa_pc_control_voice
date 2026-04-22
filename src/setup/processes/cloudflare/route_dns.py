@@ -5,12 +5,8 @@ import subprocess
 def route_dns(domain, log):
     try:
         run_cmd([CLOUDFLARED_PATH, "tunnel", "route", "dns", "alexa-tunnel", domain])
-        log("DNS created")
     except subprocess.CalledProcessError as e:
         error_msg = e.stderr or e.stdout or ""
 
         if "already exists" in error_msg or "code: 1003" in error_msg:
-            log("DNS already exists, using previous config.")
-        else:
-            log(f"DNS Error: {error_msg}")
-            raise
+            log("DNS already exists, please run the Uninstaller.exe and delete the previous DNS entry.")

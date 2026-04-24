@@ -18,7 +18,8 @@ class Player:
             [
                 "mpv",
                 r"--input-ipc-server=\\.\pipe\mpvsocket",
-                "--volume=60",
+                "--volume=70",
+                "--no-video",
                 source,
             ],
             stdout=subprocess.DEVNULL,

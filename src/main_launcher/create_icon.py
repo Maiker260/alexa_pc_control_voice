@@ -9,8 +9,9 @@ def create_icon():
     icon = Icon(
         "AlexaPC",
         image,
-        "Alexa PC Control",
+        "Alexa PC Voice Control",
         menu=Menu(
+            MenuItem("Alexa PC Voice Control"),
             MenuItem("Exit", on_exit)
         )
     )

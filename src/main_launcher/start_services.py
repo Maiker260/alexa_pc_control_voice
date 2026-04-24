@@ -2,6 +2,7 @@ import subprocess
 import os
 import sys
 import signal
+import threading
 
 from src.main import app
 from src.utils.tunnel_data import tunnel_name
@@ -24,16 +25,17 @@ def start_services():
     # Run the API
     print("Starting tunnel...")
     try:
-        subprocess.Popen([
+        process = subprocess.Popen([
             CLOUDFLARED_PATH,
             "tunnel",
             "--config",
             config_path,
             "run",
             tunnel_name
-        ], 
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL)
+            ],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
         
         print("Tunnel running.")
     except Exception as e:
@@ -49,4 +51,4 @@ def start_services():
     signal.signal(signal.SIGINT, shutdown)
 
     print("Starting Services...")
-    run_api(app)
+    threading.Thread(target=run_api, args=(app,), daemon=True).start()

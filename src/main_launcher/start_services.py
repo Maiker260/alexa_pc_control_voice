@@ -51,7 +51,5 @@ def start_services():
             process.terminate()
         sys.exit(0)
 
-    signal.signal(signal.SIGINT, shutdown)
-
     print("Starting Services...")
     threading.Thread(target=run_api, args=(app,), daemon=True).start()

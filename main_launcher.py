@@ -14,7 +14,8 @@ if ctypes.windll.kernel32.GetLastError() == 183:
     sys.exit(0)
 
 def main():
-    threading.Thread(target=start_services, daemon=True).start()
+    start_services()
+    # threading.Thread(target=start_services, daemon=True).start()
     create_icon()
 
 if __name__ == "__main__":

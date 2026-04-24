@@ -33,8 +33,8 @@ def start_services():
             "run",
             tunnel_name
             ],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
+            # stdout=subprocess.DEVNULL,
+            # stderr=subprocess.DEVNULL
         )
         
         print("Tunnel running.")

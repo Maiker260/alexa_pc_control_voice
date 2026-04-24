@@ -1,11 +1,10 @@
 from pystray import Icon, Menu, MenuItem
 from PIL import Image
 from .on_exit import on_exit
-from pathlib import Path
+from src.utils.get_asset_path import get_asset_path
 
 def create_icon():
-    icon_path = Path(__file__).parent / "assets" / "icon.png"
-    image = Image.open(icon_path)
+    image = Image.open(get_asset_path("icon.png"))
 
     icon = Icon(
         "AlexaPC",

@@ -23,7 +23,7 @@ def register_pair_code(domain):
 
         try:
             response = requests.post(url, json=data, timeout=5)
-
+            
             if response.status_code == 200:
                 return pair_code, api_key, secret_code
 
@@ -33,6 +33,6 @@ def register_pair_code(domain):
             raise Exception(f"Error API: {response.status_code} - {response.text}")
 
         except Exception as e:
-            print(f"Register error: {e}")
+            print(f"Registration error: {e}")
 
     raise Exception("Unable to register the code after many attempts.")

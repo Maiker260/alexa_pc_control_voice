@@ -15,7 +15,7 @@ def create_start_setup(root, on_submit_callback, log):
                 f"3. Say: 'Mi código es {pair_code}'\n"
             )
 
-            root.after(0, lambda: show_popup(root, title, message))
+            root.after(0, lambda: show_popup(title, message))
 
         except Exception as e:
             log(f"Error: {e}")

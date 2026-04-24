@@ -31,8 +31,6 @@ def uninstall():
         uninstall_cloudflared_package()
         print("Cloudflared removed successfully")
 
-        show_popup("Uninstall Complete", "All components were successfully removed.")
-
         if domain:
             dns_cleanup_popup(domain)
             open_cloudflare_dns(domain)

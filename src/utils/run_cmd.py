@@ -5,5 +5,6 @@ def run_cmd(cmd):
         cmd, 
         check=True,
         capture_output=True,
-        text=True
+        text=True,
+        creationflags=subprocess.CREATE_NO_WINDOW
     )

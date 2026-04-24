@@ -3,7 +3,7 @@ import os
 import sys
 import signal
 import threading
-
+import subprocess
 from src.main import app
 from src.utils.tunnel_data import tunnel_name
 from src.utils.PATHS import CLOUDFLARED_PATH
@@ -13,6 +13,8 @@ from src.utils.get_config_path import get_config_path, get_yaml_path
 process = None
 
 def start_services():
+    CREATE_NO_WINDOW = 0x08000000
+
     global process
 
     # Check if the config exists
@@ -34,7 +36,8 @@ def start_services():
             tunnel_name
             ],
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
+            stderr=subprocess.DEVNULL,
+            creationflags=CREATE_NO_WINDOW
         )
         
         print("Tunnel running.")

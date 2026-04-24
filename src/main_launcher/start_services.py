@@ -8,13 +8,10 @@ from src.utils.PATHS import CLOUDFLARED_PATH
 from src.api.run_api import run_api
 from src.utils.get_config_path import get_config_path, get_yaml_path
 from src.api.wait_for_port import wait_for_port
-
-process = None
+import src.main_launcher.process_manager as pm
 
 def start_services():
     CREATE_NO_WINDOW = 0x08000000
-
-    global process
 
     # Check if the config exists
     if not os.path.exists(get_config_path()):
@@ -39,7 +36,7 @@ def start_services():
     # Start Cloudflared
     print("Starting tunnel...")
     try:
-        process = subprocess.Popen([
+        pm.process = subprocess.Popen([
             CLOUDFLARED_PATH,
             "tunnel",
             "--config",
@@ -55,6 +52,3 @@ def start_services():
         print("Tunnel running.")
     except Exception as e:
         print(f"Error starting tunnel: {e}")
-
-    print("Starting Services...")
-    threading.Thread(target=run_api, args=(app,), daemon=True).start()

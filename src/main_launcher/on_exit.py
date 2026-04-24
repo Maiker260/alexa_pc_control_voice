@@ -1,15 +1,15 @@
 import os
-from src.main_launcher import start_services
+from .process_manager import process
 
 def on_exit(icon, item):
     print("Shutting down...")
 
-    if start_services.process:
+    if process:
         try:
-            start_services.process.terminate()
-            start_services.process.wait(timeout=5)
+            process.terminate()
+            process.wait(timeout=5)
         except:
-            start_services.process.kill()
+            process.kill()
 
     icon.stop()
     os._exit(0)

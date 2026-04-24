@@ -1,7 +1,6 @@
 import subprocess
 import os
 import sys
-import signal
 import threading
 import subprocess
 from src.main import app
@@ -43,13 +42,6 @@ def start_services():
         print("Tunnel running.")
     except Exception as e:
         print(f"Error starting tunnel: {e}")
-
-    # Terminate the process correctly
-    def shutdown(sig, frame):
-        print("Shutting down...")
-        if process:
-            process.terminate()
-        sys.exit(0)
 
     print("Starting Services...")
     threading.Thread(target=run_api, args=(app,), daemon=True).start()

@@ -1,15 +1,8 @@
-import traceback
+import threading
 
-from src.api.start_services import start_services
-
-def main():
-    try:
-        print("Launcher started")
-        start_services()
-    except Exception as e:
-        print("ERROR:")
-        traceback.print_exc()
-        input("Press enter to exit...")
+from src.main_launcher.start_services import start_services
+from src.main_launcher.create_icon import create_icon
 
 if __name__ == "__main__":
-    main()
+    threading.Thread(target=start_services, daemon=True).start()
+    create_icon()

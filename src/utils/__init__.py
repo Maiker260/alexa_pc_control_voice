@@ -15,6 +15,7 @@ from .remove_files import remove_files
 from .is_admin import is_admin
 from .is_installed import is_installed
 from .show_popup import show_popup
+from .get_asset_path import get_asset_path
 
 __all__ = [
     "load_user_config", 
@@ -38,5 +39,6 @@ __all__ = [
     "remove_files",
     "is_admin",
     "is_installed",
-    "show_popup"
+    "show_popup",
+    "get_asset_path"
 ]

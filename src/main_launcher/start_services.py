@@ -6,7 +6,7 @@ import signal
 from src.main import app
 from src.utils.tunnel_data import tunnel_name
 from src.utils.PATHS import CLOUDFLARED_PATH
-from .run_api import run_api
+from src.api.run_api import run_api
 from src.utils.get_config_path import get_config_path, get_yaml_path
 
 process = None

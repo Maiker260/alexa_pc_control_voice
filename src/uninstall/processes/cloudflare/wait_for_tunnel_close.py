@@ -11,10 +11,11 @@ def wait_for_tunnel_close(tunnel_name, timeout=90):
         result = subprocess.run(
             [CLOUDFLARED_PATH, "tunnel", "info", tunnel_name],
             capture_output=True,
-            text=True
+            text=True,
+            creationflags=subprocess.CREATE_NO_WINDOW,
         )
 
-        if "Connections: 0" in result.stdout:
+        if "does not have any active connection" in result.stdout:
             logging.info("Tunnel fully disconnected.")
             return True
         

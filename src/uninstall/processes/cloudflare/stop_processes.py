@@ -13,7 +13,8 @@ def stop_processes():
             subprocess.run(
                 ["taskkill", "/F", "/T", "/IM", proc],
                 stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL
+                stderr=subprocess.DEVNULL,
+                creationflags=subprocess.CREATE_NO_WINDOW,
             )
             logging.info(f"Terminated {proc}")
         except Exception:

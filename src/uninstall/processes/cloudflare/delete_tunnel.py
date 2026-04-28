@@ -9,8 +9,11 @@ def delete_tunnel():
             CLOUDFLARED_PATH,
             "tunnel",
             "delete",
-            tunnel_name
-        ], check=True)
+            tunnel_name,
+        ], 
+            check=True, 
+            creationflags=subprocess.CREATE_NO_WINDOW
+        )
         
         logging.info("Tunnel deleted successfully.")
 

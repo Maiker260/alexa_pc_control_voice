@@ -16,7 +16,7 @@ from .is_admin import is_admin
 from .is_installed import is_installed
 from .show_popup import show_popup
 from .get_asset_path import get_asset_path
-from .setup_logging import setup_logging
+from .setup_logging import setup_logging, setup_uvicorn_logging
 
 __all__ = [
     "load_user_config", 
@@ -42,5 +42,6 @@ __all__ = [
     "is_installed",
     "show_popup",
     "get_asset_path",
-    "setup_logging"
+    "setup_logging",
+    "setup_uvicorn_logging"
 ]

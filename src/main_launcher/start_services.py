@@ -9,8 +9,8 @@ from src.utils.PATHS import CLOUDFLARED_PATH
 from src.api.run_api import run_api
 from src.utils.get_config_path import get_config_path, get_yaml_path
 from src.api.wait_for_port import wait_for_port
+from src.utils.setup_logging import setup_logging, setup_uvicorn_logging
 from .process_manager import process as pm
-from src.utils.setup_logging import setup_logging
 
 def safe_run_api():
     try:
@@ -19,7 +19,10 @@ def safe_run_api():
         logging.exception("FastAPI crashed")
 
 def start_services():
+    # Start Logging
     setup_logging()
+    setup_uvicorn_logging()
+
     CREATE_NO_WINDOW = 0x08000000
 
     # Check if the config exists
@@ -60,5 +63,5 @@ def start_services():
         )
         
         logging.info("Tunnel running.")
-    except Exception as e:
-        print(f"Error starting tunnel: {e}")
+    except Exception:
+        logging.exception("Error starting tunnel")

@@ -1,4 +1,4 @@
 import uvicorn
 
 def run_api(app):
-    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="warning")
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_config=None, access_log=False)

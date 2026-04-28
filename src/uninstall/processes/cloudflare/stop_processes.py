@@ -19,4 +19,4 @@ def stop_processes():
         except Exception:
             logging.exception(f"Failed to terminate {proc}")
 
-    time.sleep(1)
+    time.sleep(2)

@@ -2,7 +2,7 @@ import logging
 
 from src.utils.remove_directory import remove_directory
 from src.utils.remove_files import remove_files
-from .processes.cloudflare.delete_tunnel import delete_tunnel
+from .processes.cloudflare.delete_tunnel_background import delete_tunnel_background
 from .processes.cloudflare.remove_user_config import remove_user_config
 from .processes.cloudflare.uninstall_cloudflared_package import uninstall_cloudflared_package
 from .processes.media_player.uninstall_media_tools import uninstall_media_tools
@@ -38,7 +38,7 @@ def uninstall():
     tasks = [
         ("Stopping Services", stop_processes),
         ("Uninstall media tools", uninstall_media_tools),
-        ("Deleting tunnel", delete_tunnel),
+        ("Schedule tunnel deletion", delete_tunnel_background),
         ("Removing user config", remove_user_config),
         ("Removing directories", lambda: remove_directory(CLOUDFLARED_DIR, "CLOUDFLARED_DIR")),
         ("Removing files", lambda: remove_files(USER_CONFIG_FILES_DIR, ["app_config.json", "U2ck.txt"])),

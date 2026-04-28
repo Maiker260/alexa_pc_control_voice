@@ -2,7 +2,6 @@ import logging
 
 from src.utils.remove_directory import remove_directory
 from src.utils.remove_files import remove_files
-from .processes.cloudflare.stop_cloudflared import stop_cloudflared
 from .processes.cloudflare.delete_tunnel import delete_tunnel
 from .processes.cloudflare.remove_user_config import remove_user_config
 from .processes.cloudflare.uninstall_cloudflared_package import uninstall_cloudflared_package
@@ -11,8 +10,8 @@ from .processes.cloudflare.dns_cleanup_popup import dns_cleanup_popup
 from .processes.cloudflare.open_cloudflare_dns import open_cloudflare_dns
 from src.utils.PATHS import CLOUDFLARED_DIR, USER_CONFIG_FILES_DIR
 from src.utils.load_user_config import load_user_config
-from src.utils.show_popup import show_popup
 from src.utils.setup_logging import setup_logging
+from .processes.cloudflare.stop_processes import stop_processes
 
 def cleanup_task(name, func):
     try:
@@ -37,8 +36,8 @@ def uninstall():
         domain = None
 
     tasks = [
+        ("Stopping Services", stop_processes),
         ("Uninstall media tools", uninstall_media_tools),
-        ("Stop cloudflared", stop_cloudflared),
         ("Deleting tunnel", delete_tunnel),
         ("Removing user config", remove_user_config),
         ("Removing directories", lambda: remove_directory(CLOUDFLARED_DIR, "CLOUDFLARED_DIR")),

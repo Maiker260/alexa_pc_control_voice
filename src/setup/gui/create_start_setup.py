@@ -16,7 +16,7 @@ def create_start_setup(root, on_submit_callback, log):
             message = (
                 "Setup completed successfully!\n\n"
                 "Next steps:\n\n"
-                "1. Enable the Alexa skill. Say: 'Alexa, vamoa jugar'\n"
+                "1. Enable the Alexa skill. Say: 'Alexa, escritorio remoto'\n"
                 "2. Say: 'Iniciar configuración'\n"
                 f"3. Say: 'Mi código es {pair_code}'\n"
             )

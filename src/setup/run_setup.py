@@ -34,7 +34,7 @@ def run_setup(domain: str, log=None):
         save_app_config(domain, api_key, secret_code, tunnel_name)
 
         write("Setup Done.")
-        write("You can close this window and run the App Launcher.")
+        write("You can close this window and continue with the installation")
     except Exception:
         logging.exception("Setup Error")
         write("Setup Error occurred. Check setup logs.")

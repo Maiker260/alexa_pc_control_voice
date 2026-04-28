@@ -12,7 +12,7 @@ def register_pair_code(domain):
         pair_code = str(secrets.randbelow(900000) + 100000)
         api_key = generate_api_key()
         secret_code = generate_local_secret()
-        
+
         data = {
             "pair_code": pair_code,
             "device_secret": secret_code,

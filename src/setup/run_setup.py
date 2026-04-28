@@ -1,3 +1,5 @@
+import logging
+
 from .processes.cloudflared_setup import cloudflared_setup
 from .processes.media_player_setup import media_player_setup
 from .config.create_config_file import create_config_file
@@ -8,11 +10,12 @@ from src.utils.tunnel_data import tunnel_name
 def run_setup(domain: str, log=None):
     def write(msg, require = None):
         prefix = "[REQUIRE]" if require else "[SETUP]"
+        full_msg = f"{prefix} {msg}"
 
         if log:
-            log(f"{prefix} {msg}")
-        else:
-            print(f"{prefix} {msg}")
+            log(full_msg)
+
+        logging.info(full_msg)
 
     try:
         write("Generating secure device credentials...")
@@ -32,8 +35,9 @@ def run_setup(domain: str, log=None):
 
         write("Setup Done.")
         write("You can close this window and run the App Launcher.")
-    except Exception as e:
-        write(f"Setup Error: {e}")
+    except Exception:
+        logging.exception("Setup Error")
+        write("Setup Error occurred. Check setup logs.")
         raise
 
     return pair_code

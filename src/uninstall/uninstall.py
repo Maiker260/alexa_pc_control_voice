@@ -14,6 +14,7 @@ from src.utils.setup_logging import setup_logging
 from .processes.cloudflare.stop_processes import stop_processes
 from .processes.cloudflare.wait_for_tunnel_close import wait_for_tunnel_close
 from .processes.cloudflare.notify_user_about_tunnel_wait import notify_user_about_tunnel_wait
+from src.utils.tunnel_data import tunnel_name
 
 def cleanup_task(name, func):
     try:
@@ -46,7 +47,7 @@ def uninstall():
 
     notify_user_about_tunnel_wait()
 
-    if wait_for_tunnel_close():
+    if wait_for_tunnel_close(tunnel_name):
         logging.info("Tunnel is safe to delete now.")
     else:
         logging.warning("Proceeding with tunnel delete anyway (timeout).")

@@ -4,12 +4,12 @@ import logging
 
 from src.utils.PATHS import CLOUDFLARED_PATH
 
-def wait_for_tunnel_close(tunnel_id, timeout=90):
+def wait_for_tunnel_close(tunnel_name, timeout=90):
     start = time.time()
 
     while time.time() - start < timeout:
         result = subprocess.run(
-            [CLOUDFLARED_PATH, "tunnel", "info", tunnel_id],
+            [CLOUDFLARED_PATH, "tunnel", "info", tunnel_name],
             capture_output=True,
             text=True
         )

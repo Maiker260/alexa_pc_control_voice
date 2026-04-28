@@ -5,8 +5,8 @@ import os
 from src.utils.PATHS import USER_CONFIG_FILES_DIR
 
 def setup_logging(log_name, level=logging.INFO, max_bytes=1_000_000, backup_count=5):
+    os.makedirs(USER_CONFIG_FILES_DIR, exist_ok=True)
     log_path = os.path.join(USER_CONFIG_FILES_DIR, log_name)
-    os.makedirs(log_path, exist_ok=True)
 
     handler = RotatingFileHandler(
         log_path,

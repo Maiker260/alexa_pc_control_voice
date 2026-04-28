@@ -1,4 +1,5 @@
 import os
+import logging
 
 def remove_files(directory, files):
     for file in files:
@@ -7,8 +8,8 @@ def remove_files(directory, files):
         try:
             if os.path.exists(path):
                 os.remove(path)
-                print(f"{file} deleted.")
+                logging.info(f"{file} deleted.")
             else:
-                print(f"{file} not found, skipping.")
-        except Exception as e:
-            print(f"Error deleting {file}: {e}")
+                logging.info(f"{file} not found, skipping.")
+        except Exception:
+            logging.exception(f"Error deleting {file}")

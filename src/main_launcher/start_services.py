@@ -9,8 +9,8 @@ from src.utils.PATHS import CLOUDFLARED_PATH
 from src.api.run_api import run_api
 from src.utils.get_config_path import get_config_path, get_yaml_path
 from src.api.wait_for_port import wait_for_port
-import src.main_launcher.process_manager as pm
-from utils.setup_logging import setup_logging
+from .process_manager import process as pm
+from src.utils.setup_logging import setup_logging
 
 def safe_run_api():
     try:

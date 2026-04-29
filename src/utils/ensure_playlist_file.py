@@ -15,17 +15,20 @@ def ensure_playlist_file():
 
     template = [
         {
-            "_comment": "Add your playlists below. Keywords are used to trigger this playlist.",
-            "name": "Example Playlist",
-            "keywords": ["example", "demo"],
-            "url": "https://youtube.com/playlist?list=YOUR_PLAYLIST_ID"
+            "_comment": "Add your playlists below. Each item supports: name, keywords, url, shuffle (true/false)"
         },
         {
-            "_comment": "Add your playlists below. Keywords are used to trigger this playlist.",
-            "name": "Example Playlist",
-            "keywords": ["example", "demo"],
-            "url": "https://youtube.com/playlist?list=YOUR_PLAYLIST_ID"
+            "name": "Chill Playlist",
+            "keywords": ["chill", "relax", "tranquilo"],
+            "url": "https://youtube.com/playlist?list=YOUR_PLAYLIST_ID",
+            "shuffle": True
         },
+        {
+            "name": "Happy Playlist",
+            "keywords": ["feliz", "alegre", "dia bueno"],
+            "url": "https://youtube.com/playlist?list=YOUR_PLAYLIST_ID",
+            "shuffle": True
+        }
     ]
 
     try:

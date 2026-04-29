@@ -20,6 +20,9 @@ def get_playlists_from_config(playlist_kwd):
     playlist_kwd = playlist_kwd.lower().strip()
 
     for item in data:
+        if "url" not in item:
+            continue
+
         keywords = item.get("keywords", [])
         url = item.get("url")
         
@@ -28,7 +31,10 @@ def get_playlists_from_config(playlist_kwd):
 
         if any(keyword.lower() == playlist_kwd for keyword in keywords):
             logging.info(f"Keyword '{playlist_kwd}' matched playlist: {url}")
-            return url
+            return {
+                "url": url,
+                "shuffle": item.get("shuffle", False)
+            }
         
     logging.info("No playlist match found")
 

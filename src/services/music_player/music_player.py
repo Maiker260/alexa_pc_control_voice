@@ -1,5 +1,7 @@
 import threading
 import time
+import logging
+import random
 
 from .queue_manager import QueueManager
 from .player import Player
@@ -41,16 +43,22 @@ class MusicPlayer:
             self.thread.start()
 
     def play(self, song):
-        print("Playing Music...")
+        logging.info("Playing Music...")
         with self.lock:
             self.queue.add(song)
 
         self.ensure_thread()
 
-    def play_playlist(self, playlist_url):
-        print("Loading playlist...")
+    def play_playlist(self, playlist_data):
+        logging.info("Loading playlist...")
+
+        playlist_url = playlist_data.get("url")
+        shuffle = playlist_data.get("shuffle", False)
 
         urls = get_playlist_urls(playlist_url)
+
+        if shuffle:
+            random.shuffle(urls)
 
         with self.lock:
             for url in urls:
@@ -66,15 +74,15 @@ class MusicPlayer:
         self.playing = False
 
     def pause(self):
-        print("Pausing the Music...")
+        logging.info("Pausing the Music...")
         self.player.pause()
 
     def resume(self):
-        print("Resuming the Music...")
+        logging.info("Resuming the Music...")
         self.player.resume()
 
     def stop(self):
-        print("Stopping Music...")
+        logging.info("Stopping Music...")
 
         with self.lock:
             self.queue.queue.clear()

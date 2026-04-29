@@ -30,13 +30,12 @@ def play_music(data):
     
     elif music_action == "playlist":
         playlist_kwd = data.get("playlist_kwd", "")
+        playlist_data = get_playlists_from_config(playlist_kwd)
 
-        playlist_url = get_playlists_from_config(playlist_kwd)
+        if not playlist_data:
+            raise ValueError("Playlist not found")
 
-        if not playlist_url:
-            raise ValueError("Playlist not found in the file.")
-
-        actions[music_action](playlist_url)
+        actions[music_action](playlist_data)
         return {"message": "Playlist loaded"}
 
     elif music_action == "volume":

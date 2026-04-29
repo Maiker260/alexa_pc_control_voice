@@ -1,0 +1,252 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "slots": [],
+          "name": "LolitoIntent",
+          "samples": [
+            "La vieja confiable",
+            "Ya tu sabe",
+            "La pregunta me ofende",
+            "Lo de siempre",
+            "Obvio que lolito",
+            "Hoy toca lolito",
+            "Lolito"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "SetupIntent",
+          "samples": [
+            "Configura mi PC",
+            "Iniciar configuración",
+            "Configurar computadora"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "CheckUserDataIntent",
+          "samples": [
+            "Dime mi configuracion",
+            "Cual es mi configuracion"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "RestartPcIntent",
+          "samples": [
+            "Reiniciar megazord",
+            "Reinicieme el megazord",
+            "Reiniciar PC",
+            "Reinicia mi PC",
+            "Reiniciar compu",
+            "Reinicia mi compu"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "app_name",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "name": "OpenApplicationIntent",
+          "samples": [
+            "Abrame {app_name}",
+            "Open {app_name}",
+            "Abrame el {app_name}",
+            "Abra el {app_name}",
+            "Abra {app_name}",
+            "Abrase el {app_name}",
+            "Abrir {app_name}"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "ShutdownPcIntent",
+          "samples": [
+            "Amimir",
+            "Apagueme la monstra",
+            "Apagar PC",
+            "Apagar Compu"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "song_name",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "name": "PlayMusicIntent",
+          "samples": [
+            "pongase la {song_name}",
+            "pongase el {song_name}",
+            "tireme {song_name}",
+            "pongase {song_name}",
+            "Ponga {song_name}",
+            "Pongame {song_name}",
+            "Reproduzca la cancion {song_name}",
+            "Ponga la cancion {song_name}",
+            "Busque la cancion {song_name}",
+            "Reproducir cancion {song_name}"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "StopMusicIntent",
+          "samples": [
+            "Stop Music",
+            "Detener musica",
+            "Quite la musica",
+            "Pare la musica"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "ResumeMusicIntent",
+          "samples": [
+            "Pongala otra vez",
+            "Reanuda la musica",
+            "Ponga la musica",
+            "Ponga otra vez la musica",
+            "Vuelva a poner la musica",
+            "Reanude la musica",
+            "Reanudar musica"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "PauseMusicIntent",
+          "samples": [
+            "Pausela",
+            "Deme un toque",
+            "Pause music",
+            "Pongale pausa",
+            "Pause la musica",
+            "Pausar musica"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "SkipMusicIntent",
+          "samples": [
+            "Cambie la cancion",
+            "Me arrepenti",
+            "Pongase otra",
+            "Siguiente cancion",
+            "Mejor ponga la siguiente",
+            "Esa no me gusta",
+            "Saltese esa",
+            "Salte la cancion"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "vol_value",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "name": "VolUpIntent",
+          "samples": [
+            "Subale el volumen",
+            "Suba el volumen",
+            "Subame el volumen",
+            "Sube el volumen",
+            "Subale el volumen {vol_value}",
+            "Volume Up {vol_value}",
+            "Suba el volumen {vol_value}",
+            "Subame el volumen {vol_value}",
+            "Sube el volumen {vol_value}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "vol_value",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "name": "VolDownIntent",
+          "samples": [
+            "Bajele el volumen",
+            "Baja el volumen",
+            "Bajeme el volumen",
+            "Baje el volumen",
+            "Bajele el volumen {vol_value}",
+            "Baja el volumen {vol_value}",
+            "Bajeme el volumen {vol_value}",
+            "Baje el volumen {vol_value}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "vol_value",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "name": "SetVolIntent",
+          "samples": [
+            "Cambia el volumen a {vol_value}",
+            "Volumen en {vol_value}",
+            "Deje el volumen en {vol_value}",
+            "Cambie el volumen a {vol_value}",
+            "Ponga el volumen en {vol_value}",
+            "Volumen al {vol_value}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "playlist_kwd",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "name": "PlayPlaylistIntent",
+          "samples": [
+            "Playlist {playlist_kwd}",
+            "Ponga la playlist {playlist_kwd}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "link_code",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "name": "LinkCodeIntent",
+          "samples": [
+            "El codigo es {link_code}",
+            "Mi codigo es {link_code}"
+          ]
+        }
+      ],
+      "types": [],
+      "invocationName": "escritorio remoto"
+    }
+  }
+}

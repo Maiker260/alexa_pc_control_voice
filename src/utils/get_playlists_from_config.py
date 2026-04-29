@@ -1,23 +1,35 @@
 import json
-from pathlib import Path
+import logging
 
-from src.utils.PATHS import USER_CONFIG_FILES_DIR
+from src.utils.ensure_playlist_file import ensure_playlist_file
 
 def get_playlists_from_config(playlist_kwd):
-    config_dir = Path(USER_CONFIG_FILES_DIR)
-    config_dir.mkdir(parents=True, exist_ok=True)
+    playlist_path = ensure_playlist_file()
 
-    playlist_path = config_dir / "playlists.json"
-    
-    if not playlist_path.exists():
+    try:
+        with open(playlist_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        logging.exception("Invalid playlists.json")
         return None
 
-    with open(playlist_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    if not isinstance(data, list):
+        logging.error("playlists.json must contain a list")
+        return None
+
+    playlist_kwd = playlist_kwd.lower().strip()
 
     for item in data:
-        for keyword in item.get("keywords", []):
-            if keyword.lower() in playlist_kwd:
-                return item.get("url")
+        keywords = item.get("keywords", [])
+        url = item.get("url")
+        
+        if not keywords or not url:
+            continue
+
+        if any(keyword.lower() == playlist_kwd for keyword in keywords):
+            logging.info(f"Keyword '{playlist_kwd}' matched playlist: {url}")
+            return url
+        
+    logging.info("No playlist match found")
 
     return None

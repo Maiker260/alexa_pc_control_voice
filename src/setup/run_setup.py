@@ -6,6 +6,7 @@ from .config.create_config_file import create_config_file
 from .config.save_app_config import save_app_config
 from .processes.register_pair_code import register_pair_code
 from src.utils.tunnel_data import tunnel_name
+from src.utils.ensure_playlist_file import ensure_playlist_file
 
 def run_setup(domain: str, log=None):
     def write(msg, require = None):
@@ -26,6 +27,9 @@ def run_setup(domain: str, log=None):
 
         write("Installing Media Player Components...")
         media_player_setup(write)
+
+        write("Creating playlists template...")
+        ensure_playlist_file()
 
         write("Creating config.yml...")
         create_config_file(domain)

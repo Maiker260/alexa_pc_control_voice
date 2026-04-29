@@ -1,0 +1,19 @@
+from ask_sdk_core.dispatch_components import AbstractRequestHandler
+import ask_sdk_core.utils as ask_utils
+
+class CancelOrStopIntentHandler(AbstractRequestHandler):
+    """Single handler for Cancel and Stop Intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return (ask_utils.is_intent_name("AMAZON.CancelIntent")(handler_input) or
+                ask_utils.is_intent_name("AMAZON.StopIntent")(handler_input))
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        speak_output = "Bueno, ahi se ve."
+
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
+                .response
+        )

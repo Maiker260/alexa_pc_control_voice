@@ -1,0 +1,98 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "es-MX": {
+          "summary": "Controla tu computadora con tu voz: abre aplicaciones, reproduce música y administra tu PC de forma rápida y sencilla con Alexa.",
+          "examplePhrases": [
+            "Alexa, escritorio remoto",
+            "Abrir Discord",
+            "Reproducir cancion Lose Yourself"
+          ],
+          "keywords": [
+            "control",
+            "pc",
+            "computadora",
+            "por",
+            "voz",
+            "control",
+            "remoto",
+            "pc",
+            "comandos",
+            "de",
+            "voz",
+            "automatización",
+            "pc",
+            "control",
+            "alexa",
+            "pc",
+            "asistente",
+            "de",
+            "voz",
+            "pc",
+            "control",
+            "remoto",
+            "computadora",
+            "productividad",
+            "control",
+            "por",
+            "voz",
+            "automatización",
+            "tareas"
+          ],
+          "name": "Control My PC",
+          "description": "Convierte tu computadora en una extensión de tu hogar inteligente con esta skill de Alexa. Diseñada para ofrecerte control total mediante comandos de voz, esta skill te permite gestionar tu PC de manera cómoda, rápida y sin necesidad de usar el teclado o el mouse.\n\nCon esta skill podrás abrir aplicaciones, reproducir música, ejecutar comandos del sistema como reiniciar o apagar tu computadora, y automatizar tareas cotidianas sin esfuerzo. Es ideal para mejorar tu productividad, simplificar tu flujo de trabajo o simplemente disfrutar de una experiencia tecnológica más fluida.\n\nLa configuración es sencilla y está pensada tanto para usuarios principiantes como avanzados. Solo necesitas vincular tu computadora con Alexa y comenzar a usar comandos de voz de inmediato.\n\nDisfruta de una nueva forma de interactuar con tu PC, integrando el poder de la automatización y la comodidad del control por voz en tu día a día.",
+          "smallIconUri": "file://assets/images/es-MX_smallIconUri.png",
+          "largeIconUri": "file://assets/images/es-MX_largeIconUri.png"
+        }
+      },
+      "isAvailableWorldwide": false,
+      "testingInstructions": "{\"ask_dist_username\":\"\",\"ask_dist_password\":\"\",\"ask_dist_testing_instructions\":\"La aplicacion envia solicitudes HTTP a la computadora que tenga instalado un cliente para realizar las acciones.\\n\\nPor ejemplo,\\n\\n1. Usuario: Alexa, vamoa juga\\n2. Alexa responde: De fijo, que vamoa hace hoy?\\n3. Usuario: Abrir Discord.\\n4. La PC recibe la solicitud llamada \\\"abrir discord\\\"\\n5. La PC abre la aplicacion llamada \\\"discord\\\".\"}",
+      "category": "ORGANIZERS_AND_ASSISTANTS",
+      "distributionMode": "PUBLIC",
+      "distributionCountries": [
+        "US",
+        "CR"
+      ]
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:527097962301:function:4cb95940-f428-41df-b0ad-c855d0d13502:Release_0"
+        },
+        "interfaces": [],
+        "locales": {},
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:527097962301:function:4cb95940-f428-41df-b0ad-c855d0d13502:Release_0"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:527097962301:function:4cb95940-f428-41df-b0ad-c855d0d13502:Release_0"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-west-2:527097962301:function:4cb95940-f428-41df-b0ad-c855d0d13502:Release_0"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "locales": {
+        "es-MX": {
+          "privacyPolicyUrl": ""
+        }
+      },
+      "containsAds": false,
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}

@@ -76,17 +76,17 @@ Before installing the application, make sure you have the following:
 
 ### 6. Skill Setup Process
 
-Enable the Skill by saying:
+- Enable the Skill by saying:
 
-> "Alexa, escritorio remoto"
+  > "Alexa, escritorio remoto"
 
-Start the configuration process by saying:
+- Start the configuration process by saying:
 
-> "Configura mi PC"
+  > "Configura mi PC"
 
-Link your device by saying:
+- Link your device by saying:
 
-> "Mi código es ######"
+  > "Mi código es ######"
 
 (Replace `######` with the activation code shown after installation.)
 

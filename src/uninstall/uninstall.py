@@ -45,7 +45,8 @@ def uninstall():
     for name, func in tasks:
         cleanup_task(name, func)
 
-    notify_user_about_tunnel_wait()
+    if not wait_for_tunnel_close(tunnel_name, check_only=True):
+        notify_user_about_tunnel_wait()
 
     if wait_for_tunnel_close(tunnel_name):
         logging.info("Tunnel is safe to delete now.")

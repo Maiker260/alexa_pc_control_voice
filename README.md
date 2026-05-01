@@ -24,18 +24,16 @@ You must have a Cloudflare account. If you don’t have one, create it for free.
 
 ### 2. Domain Name
 
-You need to own a domain.
+You need to own a Domain Name.
 
-**Recommendations:**
+If you don't have one, you can purchase one through:
 
-- Choose a domain with a low initial cost
-- Check renewal pricing (some domains are cheap at first but expensive later)
+`Cloudflare Dashboard > Domains > Overview > Buy Domain`
 
-### 3. Domain Setup in Cloudflare
+  **Recommendations:**
 
-After purchasing your domain:
-
-Go to: Cloudflare Dashboard \> Domains \> Overview
+  - Choose a domain with a very low initial cost (and renewal price)
+  - Check renewal pricing (some domains are cheap at first but expensive later)
 
 ---
 
@@ -43,9 +41,8 @@ Go to: Cloudflare Dashboard \> Domains \> Overview
 
 ### 1. Install the Alexa Skill
 
--     Go to the Alexa Skills Store
-- Search for:
-  \> Control my PC
+- Go to the Alexa Skills Store
+- Search for **"Control my PC"**
 - Install the skill
 
 ### 2. Download the Client Application
@@ -60,38 +57,48 @@ Go to: Cloudflare Dashboard \> Domains \> Overview
 ### 4. Run the Installer
 
 - Extract the `AlexaPcVoiceControl.zip` file
-- Run:
-  \> AlexaPcVoiceControlSetup.exe
+- Run "AlexaPcVoiceControlSetup.exe"
 
 ### 5. Client Setup Process
 
-During installation:
+  - During installation:
 
-- You will be asked to enter your domain
-- This domain will be linked to your PC
+    - You will be asked to enter your domain
+    - This domain will be linked to your PC
 
-After setup completes:
+  - After setup completes:
 
-- Save your activation code (Make sure to use it before 5min, if not you will have to reinstall the Client)
-- The application will start automatically
-- It will run in the **system tray** under the name:
-  \> AlexaPcVoiceControl
+    - Save your activation code
+    - The activation code expires after 5 minutes
+    - If the code expires, reinstall the client to generate a new one
+    - The application will start automatically
+    - The application will run in the Windows system tray under the name `AlexaPcVoiceControl`
 
 ### 6. Skill Setup Process
 
-- Enable the Skill by saying "Alexa, escritorio remoto"
-- Start the configuration process by saying "Configura mi PC"
-- Link your device by saying "Mi codigo es ######" (Activation code shown after the installation)
+Enable the Skill by saying:
+
+> "Alexa, escritorio remoto"
+
+Start the configuration process by saying:
+
+> "Configura mi PC"
+
+Link your device by saying:
+
+> "Mi código es ######"
+
+(Replace `######` with the activation code shown after installation.)
 
 ## User Guide
 
 A detailed user guide is included inside the `AlexaPcVoiceControl.zip` file.
 
-It contains:
+  - It contains:
 
-- How to configure the Alexa Skill
-- How to use voice commands
-- Example interactions
+    - How to configure the Alexa Skill
+    - How to use voice commands
+    - Example interactions
 
 ---
 
@@ -127,7 +134,7 @@ The system includes multiple layers of security:
 ## Additional Notes
 
 - The application runs silently in the background
-- It starts automatically with Windows (If checked during the Client installation)
+- It starts automatically with Windows (If enabled during the Client installation)
 - No port forwarding is required
 
 ---

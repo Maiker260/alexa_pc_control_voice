@@ -57,7 +57,7 @@ If you don't have one, you can purchase one through:
 ### 4. Run the Installer
 
 - Extract the `AlexaPcVoiceControl.zip` file
-- Run "AlexaPcVoiceControlSetup.exe"
+- Run `AlexaPcVoiceControlSetup.exe`
 
 ### 5. Client Setup Process
 

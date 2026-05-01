@@ -20,20 +20,20 @@ Before installing the application, make sure you have the following:
 
 ### 1. Cloudflare Account
 
-You must have a Cloudflare account. If you don’t have one, create it for free.
+- You must have a Cloudflare account. If you don’t have one, create it for free.
 
 ### 2. Domain Name
 
-You need to own a Domain Name.
+- You need to own a Domain Name.
 
-If you don't have one, you can purchase one through:
+  - If you don't have one, you can purchase one through:
 
-`Cloudflare Dashboard > Domains > Overview > Buy Domain`
+    `Cloudflare Dashboard > Domains > Overview > Buy Domain`
 
-  **Recommendations:**
+  - **Recommendations:**
 
-  - Choose a domain with a very low initial cost (and renewal price)
-  - Check renewal pricing (some domains are cheap at first but expensive later)
+    - Choose a domain with a very low initial cost (and renewal price)
+    - Check renewal pricing (some domains are cheap at first but expensive later)
 
 ---
 

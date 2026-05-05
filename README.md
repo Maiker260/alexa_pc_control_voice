@@ -1,5 +1,11 @@
 # Alexa PC Voice Control
 
+## Demo
+
+Demo using the Alexa Developer Console as reference:
+
+![Alexa Demo](./assets/voice-control-automation-demo.gif)
+
 ## Description
 
 **Alexa PC Voice Control** is an Alexa Skill that allows you to execute actions on your personal computer using voice commands through Alexa.

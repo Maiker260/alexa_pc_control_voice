@@ -47,7 +47,7 @@ Before installing the application, make sure you have the following:
 
 ### 2. Download the Client Application
 
-- Download the `AlexaPcVoiceControl.zip` file from this repository:
+- Download the `AlexaPcVoiceControl.zip` file from this repository.
 
 ### 3. Prepare Cloudflare
 

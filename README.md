@@ -12,7 +12,6 @@ This system connects:
 
 The goal is to simplify everyday interactions with your computer, enabling hands-free control for tasks like launching applications, controlling media, and more.
 
----
 
 ## Requirements
 
@@ -35,7 +34,6 @@ Before installing the application, make sure you have the following:
     - Choose a domain with a very low initial cost (and renewal price)
     - Check renewal pricing (some domains are cheap at first but expensive later)
 
----
 
 ## Installation
 
@@ -47,7 +45,7 @@ Before installing the application, make sure you have the following:
 
 ### 2. Download the Client Application
 
-- Download the `AlexaPcVoiceControl.zip` file from this repository.
+- Download the `AlexaPcVoiceControl.zip` file from this repository
 
 ### 3. Prepare Cloudflare
 
@@ -100,7 +98,6 @@ A detailed user guide is included inside the `AlexaPcVoiceControl.zip` file.
     - How to use voice commands
     - Example interactions
 
----
 
 ## Technologies Used
 
@@ -117,7 +114,6 @@ A detailed user guide is included inside the `AlexaPcVoiceControl.zip` file.
 - Amazon DynamoDB
 - Amazon API Gateway
 
----
 
 ## Security
 
@@ -129,7 +125,6 @@ The system includes multiple layers of security:
 - Timestamp validation (prevents replay attacks)
 - Secure HTTPS communication via Cloudflare Tunnel
 
----
 
 ## Additional Notes
 
@@ -137,7 +132,6 @@ The system includes multiple layers of security:
 - It starts automatically with Windows (If enabled during the Client installation)
 - No port forwarding is required
 
----
 
 ## Author
 

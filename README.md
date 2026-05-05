@@ -4,7 +4,7 @@
 
 ![Alexa Demo](./assets/voice-control-automation-demo.gif)
 
-*This demo uses the Alexa Developer Console as a reference
+*This demo uses the Alexa Developer Console as a reference.
 
 ## Description
 
